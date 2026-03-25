@@ -1,7 +1,16 @@
 import Image from "next/image";
+import { Hero } from "./components/Hero";
+import Footer from "./components/Footer";
+import Sponsors from "./components/Sponsors";
+import EventSection from "./components/EventSection";
 
 export default function Home() {
   return (
-    <h1>Kuruksastra 26</h1> 
+    <>
+      <Hero />
+      <EventSection />
+      <Sponsors />
+      <Footer />
+    </>
   )
 }
