@@ -71,8 +71,7 @@ const Navbar = () => {
         style={{
           width: "clamp(80px, 10vw, 140px)",
           height: "auto",
-          filter: "invert(1) brightness(0.85)",
-          opacity: 0.9,
+          filter: "invert(1) brightness(0.95)",
           cursor: "pointer",
         }}
       />
@@ -310,7 +309,8 @@ export const Hero = () => {
           width: "100%",
           minHeight: "clamp(35vh, 50vh, 55vh)",
           padding: "clamp(8px, 1.5vw, 16px)",
-          backgroundColor: "#E9E1CF"
+          backgroundColor: "#E9E1CF",
+          
         }}
         className=""
       >
@@ -320,9 +320,10 @@ export const Hero = () => {
             position: "relative",
             width: "100%",
             overflow: "hidden",
-            border: "clamp(2px, 0.3vw, 3px) solid #2c3e50",
+            border: "clamp(4px, 0.3vw, 10px) solid #000000",
             borderRadius: "clamp(10px, 1.5vw, 16px)",
             minHeight: "clamp(30vh, 40vh, calc(45vh - 40px))",
+            boxShadow: "clamp(3px, 0.5vw, 5px) clamp(4px, 0.6vw, 7px) 0px rgba(0,0,0,1)"
           }}
         >
           <div
@@ -340,7 +341,7 @@ export const Hero = () => {
           <div
             style={{
               position: "absolute",
-              top: 0,
+              top: -10,
               left: 0,
               right: 0,
               zIndex: 0,

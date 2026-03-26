@@ -1,107 +1,132 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 
-export default function HeroVideo() {
-  const outerRef = useRef(null);
-  const videoRef = useRef(null);
+export default function HeroVideo({ children, cardVideoRef, src = "/asithappen.mp4" }) {
+  const runwayRef  = useRef(null);
+  const overlayRef = useRef(null);
+  const [mounted,   setMounted]   = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
 
   useEffect(() => {
-    const outer = outerRef.current;
-    const video = videoRef.current;
-    if (!outer || !video) return;
+    setMounted(true);
+    const check = () => setIsDesktop(window.innerWidth >= 1024);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
 
-    // JS fully owns the video's natural size — no CSS clamp involved
-    const setup = () => {
-      const vw = window.innerWidth;
-      const vh = window.innerHeight;
+  useEffect(() => {
+    if (!mounted || !isDesktop) return;
 
-      // Pick a natural size: 30% of viewport width, clamped, 16:9
-      const naturalW = Math.round(Math.min(Math.max(vw * 0.3, 200), 400));
-      const naturalH = Math.round(naturalW * (9 / 16));
+    const runway  = runwayRef.current;
+    const overlay = overlayRef.current;
+    if (!runway || !overlay) return;
 
-      // Explicitly stamp dimensions so getBoundingClientRect is never needed
-      video.style.transform = "scale(1)";
-      video.style.width  = `${naturalW}px`;
-      video.style.height = `${naturalH}px`;
+    const lerp = (a, b, t) => a + (b - a) * t;
+    const ease = (t) => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
 
-      // +1% buffer to prevent subpixel gaps on any screen
-      const maxScale = Math.max(vw / naturalW, vh / naturalH) * 1.01;
+    let rect       = null;
+    let hasStarted = false;
 
-      return { maxScale };
-    };
-
-    let { maxScale } = setup();
-
-    const onResize = () => {
-      ({ maxScale } = setup());
-      onScroll();
+    const measure = () => {
+      if (!cardVideoRef?.current) return;
+      const r = cardVideoRef.current.getBoundingClientRect();
+      if (r.width > 0 && r.height > 0)
+        rect = { top: r.top, left: r.left, w: r.width, h: r.height };
     };
 
     const onScroll = () => {
-      const rect = outer.getBoundingClientRect();
-      const totalRange = outer.offsetHeight - window.innerHeight;
-      if (totalRange <= 0) return;
+      const vw = window.innerWidth;
+      const vh = window.innerHeight;
 
-      const scrolled  = Math.max(0, -rect.top);
-      const progress  = Math.min(1, scrolled / totalRange);
+      const rRect      = runway.getBoundingClientRect();
+      const totalRange = runway.offsetHeight - vh;
+      const scrolled   = Math.max(0, -rRect.top);
+      const progress   = Math.min(1, scrolled / Math.max(1, totalRange));
 
-      const ZOOM_IN_END = 0.5;
-      const t = progress <= ZOOM_IN_END
-        ? progress / ZOOM_IN_END                         // 0→1 zoom in
-        : 1 - (progress - ZOOM_IN_END) / (1 - ZOOM_IN_END); // 1→0 zoom out
+      // ── Not yet scrolled into animation ──
+      if (progress === 0) {
+        overlay.style.opacity = "0";
+        if (cardVideoRef?.current) cardVideoRef.current.style.opacity = "1";
+        hasStarted = false;
+        return;
+      }
 
-      const scale = 1 + (maxScale - 1) * t;
+      // ── EXIT phase: runway scrolling off the top — fade video out ──
+      if (rRect.bottom < vh) {
+        const fade = Math.max(0, rRect.bottom / vh);
+        overlay.style.opacity = String(fade);
+        if (cardVideoRef?.current)
+          cardVideoRef.current.style.opacity = String(1 - fade);
+        return;
+      }
 
-      video.style.transform    = `scale(${scale})`;
-      video.style.borderRadius = `${8 * (1 - t)}px`;
-      video.style.borderWidth  = `${2 * (1 - t)}px`;
+      // ── ENTER phase: capture card rect once at sticky position ──
+      if (!hasStarted) {
+        measure();
+        hasStarted = true;
+      }
+      if (!rect) return;
+
+      // First 50% of runway = zoom in, last 50% = hold fullscreen
+      const t = ease(Math.min(1, progress / 0.5));
+
+      overlay.style.top          = `${lerp(rect.top,  0,  t)}px`;
+      overlay.style.left         = `${lerp(rect.left, 0,  t)}px`;
+      overlay.style.width        = `${lerp(rect.w, vw, t)}px`;
+      overlay.style.height       = `${lerp(rect.h, vh, t)}px`;
+      overlay.style.borderRadius = `${lerp(8, 0, t)}px`;
+      overlay.style.opacity      = "1";
+
+      if (cardVideoRef?.current) cardVideoRef.current.style.opacity = "0";
+    };
+
+    const onResize = () => {
+      rect = null;
+      hasStarted = false;
+      requestAnimationFrame(onScroll);
     };
 
     window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize",  onResize);
-    onScroll(); // sync on mount
+    window.addEventListener("resize", onResize);
+    onScroll();
 
     return () => {
       window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize",  onResize);
+      window.removeEventListener("resize", onResize);
     };
-  }, []);
+  }, [mounted, isDesktop, cardVideoRef]);
 
   return (
-    <div ref={outerRef} style={{ height: "300vh" }}>
-      <div
-        style={{
-          position: "sticky",
-          top: 0,
-          height: "100vh",
-          width: "100vw",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          overflow: "hidden",
-          backgroundColor: "#e9e3d5",
-        }}
-      >
+    <>
+      {/* Runway: 250vh scroll space. Card sticky-pins inside on desktop only. */}
+      <div ref={runwayRef} style={{ height: isDesktop ? "250vh" : "auto" }}>
+        <div style={{ position: isDesktop ? "sticky" : "relative", top: 0 }}>
+          {children}
+        </div>
+      </div>
+
+      {/* Portal overlay video — animates from card position to fullscreen */}
+      {mounted && isDesktop && createPortal(
         <video
-          ref={videoRef}
-          autoPlay
-          muted
-          loop
-          playsInline
+          ref={overlayRef}
+          autoPlay muted loop playsInline
           style={{
-            // NO width/height here — JS sets them in setup()
+            position: "fixed",
             objectFit: "cover",
-            transformOrigin: "center center",
-            borderRadius: "8px",
+            opacity: 0,
+            zIndex: 500,
             border: "2px solid #2C3E50",
-            willChange: "transform",
-            flexShrink: 0,
-            display: "block",
+            pointerEvents: "none",
+            margin: 0,
+            padding: 0,
           }}
         >
-          <source src="/asithappen.mp4" type="video/mp4" />
-        </video>
-      </div>
-    </div>
+          <source src={src} type="video/mp4" />
+        </video>,
+        document.body
+      )}
+    </>
   );
 }

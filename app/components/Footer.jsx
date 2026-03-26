@@ -53,16 +53,16 @@ export default function Footer() {
               </div>
 
               <div className="bg-[#6b8baf] min-h-[clamp(30px,6vw,75px)] flex items-center justify-center px-2 text-center border-b-[clamp(2px,0.4vw,3px)] border-black">
-                <p className="text-white text-[clamp(8px,4vw,36px)] uppercase leading-[0.9] whitespace-pre-line">
+                <p className="text-white text-[clamp(15px,4vw,36px)] uppercase leading-[0.9] whitespace-pre-line tracking-wide">
                   {card.role}
                 </p>
               </div>
 
               <div className="bg-[#e3dcc8] flex-1 flex flex-col items-center justify-center gap-1 px-1">
-                <p className="text-[clamp(10px,4vw,50px)] text-black leading-none font-bold md:font-normal mt-1">
+                <p className="text-[clamp(19px,4vw,50px)] text-black leading-none font-bold md:font-normal mt-1 tracking-wide">
                   {card.name}
                 </p>
-                <p className="text-black text-[clamp(9px,4vw,36px)] leading-none font-bold md:font-normal">
+                <p className="text-black text-[clamp(19px,4vw,36px)] leading-none font-bold md:font-normal tracking-wide">
                   {card.phone}
                 </p>
               </div>
@@ -89,8 +89,8 @@ export default function Footer() {
 
         {/* Bottom */}
         <div className="flex flex-row justify-between items-center px-[4vw] text-[#6b8baf] text-[clamp(5px,5vw,32px)] mt-auto mb-[20px] w-[95%] font-sans">
-          <p style={{ fontFamily: "'Jomhuria', sans-serif" }}>@{date.getFullYear()} kuruksastra</p>
-          <p style={{ fontFamily: "'Jomhuria', sans-serif" }}>Made with ❤ by 300DPI &amp; ACE</p>
+          <p style={{ fontFamily: "'Jomhuria', sans-serif" }} className="text-[#E9E1CF]">@{date.getFullYear()} kuruksastra</p>
+          <p style={{ fontFamily: "'Jomhuria', sans-serif" }} className="text-[#E9E1CF]">Made with ❤ by 300DPI &amp; ACE</p>
         </div>
 
       </div>

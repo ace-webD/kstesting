@@ -16,8 +16,9 @@ const coSponsors = [
 ];
 
 const sponsorRows = [
-  ["/logos/cub.jpg", "/logos/veranda.png","/logos/palanivel.jpg"],
-  ["/logos/pepsi.png", "/logos/2iim.png" , "/logos/az.png", ],
+  ["/logos/cub.jpg", "/logos/veranda.png"],
+  ["/logos/palanivel.jpg", "/logos/pepsi.png", ],
+  ["/logos/2iim.png" , "/logos/az.png", ],
 ];
 
 // ─── Sub-components ──────────────────────────────────────────────────────────
@@ -44,7 +45,7 @@ function SponsorsBanner() {
   return (
     <div
       className="relative flex items-center justify-between px-4 sm:px-6 lg:px-8 py-3 sm:py-2 lg:py-3
-        rounded-full border-[3px] border-black shadow-lg"
+        rounded-full border-[3px] border-black shadow-lg mb-10"
       style={{
         background: "#557792",
         boxShadow: "clamp(2px, 0.3vw, 3px) clamp(3px, 0.4vw, 5px) 0px rgba(0,0,0,1)",
@@ -56,7 +57,7 @@ function SponsorsBanner() {
         style={{
           fontFamily: "'Jomhuria', sans-serif",
           letterSpacing: "0",
-          WebkitTextStroke: "3px #000000",
+          WebkitTextStroke: "5px #000000",
           
           paintOrder: "stroke fill",
         } as React.CSSProperties}
@@ -71,19 +72,19 @@ function SponsorsBanner() {
 
 function MainSponsorsGrid() {
   return (
-    <div className="flex flex-col gap-1">
+    <div className="flex flex-col justify-evenly mb-20 lg:gap-y-12">
       {sponsorRows.map((row, rowIndex) => (
         <div
           key={rowIndex}
           className="flex items-center justify-around
             h-[60px] sm:h-[75px] md:h-[90px]
-            px-2 sm:px-3"
+            px-2 sm:px-3 gap-1 mb-4"
         >
           {row.map((logo, i) => (
             <img
               key={i}
               src={logo}
-              className="h-8 sm:h-10 md:h-12 w-auto object-contain"
+              className="h-10 sm:h-10 md:h-15 w-auto object-contain"
               style={{
                 mixBlendMode: "multiply",
                 background: "transparent",
@@ -98,41 +99,21 @@ function MainSponsorsGrid() {
 
 function CoSponsorsPanel() {
   return (
-    <div className="bg-[#2c3e50] rounded-2xl p-3 sm:p-4 text-white flex flex-col md:w-[342px] md:h-[558px] mx-auto">
+    <div style={{boxShadow: "clamp(3px, 0.5vw, 5px) clamp(4px, 0.6vw, 7px) 0px #000000"}} className="bg-[#2c3e50] rounded-2xl text-white flex flex-col mx-auto border-4 border-black my-10 md:my-0">
       <h2
-        style={{ fontFamily: "'Jomhuria', sans-serif", letterSpacing: "0" }}
-        className="text-[2.28rem] md:text-[4.84rem] font-normal text-center mb-2 sm:mb-3 leading-none text-[#E9E1CF]"
+        style={{ fontFamily: "'Jomhuria', sans-serif", letterSpacing: "0" , WebkitTextStroke: "5px #000000",
+          
+          paintOrder: "stroke fill"}}
+        className="text-[2.28rem] md:text-[4.84rem] font-normal text-center mb-2 sm:mb-3 leading-none text-[#E9E1CF] pt-3"
       >
         Co-Sponsors
       </h2>
-      <div className="bg-[#f5efe3] rounded-[10px] p-3 pt-6 sm:p-3 grid grid-cols-2 gap-2 sm:gap-3 flex-1">
-        {coSponsors.slice(0,6).map((logo, i) => (
+      <div className="bg-[#e9e1cf] rounded-[10px] p-3 p sm:p-3 grid grid-cols-2 gap-2 sm:gap-3 flex-1 w-full border-t-4 border-black">
+        {coSponsors.map((logo, i) => (
           <img
             key={i}
             src={logo}
-            className="h-10 sm:h-12 lg:h-[82px] object-contain mx-auto w-full"
-          />
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function CoSponsorsPanel1() {
-  return (
-    <div className="bg-[#2c3e50] rounded-2xl p-3 sm:p-4 text-white flex flex-col md:w-[342px] md:h-[558px] mx-auto">
-      <h2
-        style={{ fontFamily: "'Jomhuria', sans-serif", letterSpacing: "0" }}
-        className="text-[2.28rem] md:text-[4.84rem] font-normal text-center mb-2 sm:mb-3 leading-none text-[#E9E1CF]"
-      >
-        Co-Sponsors
-      </h2>
-      <div className="bg-[#f5efe3] rounded-[10px] p-2 sm:p-3 grid grid-cols-2 gap-2 sm:gap-3 flex-1">
-        {coSponsors.slice(6).map((logo, i) => (
-          <img
-            key={i}
-            src={logo}
-            className="h-10 sm:h-12 lg:h-[82px] object-contain mx-auto w-full"
+            className="h-10 sm:h-12 lg:h-[78px] object-contain mx-auto w-full"
           />
         ))}
       </div>
@@ -161,35 +142,34 @@ export default function Sponsors() {
         <SponsorsBanner />
 
         {/* Mobile: stack vertically | md+: side by side */}
-        <div className="flex flex-col gap-2 sm:gap-3 lg:gap-6 mt-2 sm:mt-3 lg:mt-6 mx-auto">
+        <div className="flex flex-col lg:flex-row gap-2 sm:gap-3 lg:gap-6 mt-6 sm:mt-3 lg:mt-10 mx-auto items-stretch">
 
           {/* Left — Main Sponsors */}
-          <div className="flex-1 border-4 border-[#213447] rounded-2xl overflow-hidden flex flex-col">
+          <div className="relative flex-1 border-4 border-[#000000] rounded-2xl overflow-hidden flex flex-col " style={{boxShadow: "clamp(3px, 0.5vw, 5px) clamp(4px, 0.6vw, 7px) 0px #000000"}}>
 
             {/* Logos area */}
-            <div className="bg-[#f5efe3] pt-3 sm:pt-4 lg:pt-5 px-3 sm:px-4 lg:px-5 pb-0">
+            <div className="bg-[#e9e1cf] pt-3 sm:pt-4 lg:pt-5 px-3 sm:px-4 lg:px-5 pb-0">
               <MainSponsorsGrid />
             </div>
 
             {/* Footer label */}
             <div
-              style={{ fontFamily: "'Jomhuria', sans-serif", letterSpacing: "0" }}
-              className="bg-[#213447] text-[#E9E1CF] text-center
+              style={{ fontFamily: "'Jomhuria', sans-serif", letterSpacing: "0", WebkitTextStroke: "5px #000000",
+          
+          paintOrder: "stroke fill" }}
+              className="absolute bottom-0 bg-[#213447] text-[#E9E1CF] text-center
                 h-[60px] md:h-[99px] flex items-center justify-center
                 text-[2.25rem] md:text-[4.8rem]
-                font-normal leading-none w-full"
+                font-normal leading-none w-full border-t-4 rounded-xl border-black"
             >
               Sponsors
             </div>
           </div>
 
           {/* Right — Co-Sponsors */}
-          <div className="flex flex-col flex-wrap lg:flex-row">
-            <div className="w-full md:w-[220px] lg:w-[280px] mx-auto mt-10 mb-20">
+          <div className="flex flex-1 flex-col flex-wrap lg:flex-row">
+            <div className="w-full">
             <CoSponsorsPanel />
-          </div>
-          <div className="w-full md:w-[220px] lg:w-[280px] mx-auto mt-10 mb-20">
-            <CoSponsorsPanel1 />
           </div>
           </div>
 
