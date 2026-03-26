@@ -43,10 +43,12 @@ function Spiral() {
 function SponsorsBanner() {
   return (
     <div
-      className="relative flex items-center justify-between px-4 sm:px-6 lg:px-8 py-3 sm:py-4 lg:py-5
+      className="relative flex items-center justify-between px-4 sm:px-6 lg:px-8 py-3 sm:py-2 lg:py-3
         rounded-full border-[3px] border-black shadow-lg"
       style={{
-        background: "linear-gradient(to bottom, #6a8fa8, #557792, #445f78)",
+        background: "#557792",
+        boxShadow: "clamp(2px, 0.3vw, 3px) clamp(3px, 0.4vw, 5px) 0px rgba(0,0,0,1)",
+        zIndex: 4
       }}
     >
       <Spiral />
@@ -55,13 +57,7 @@ function SponsorsBanner() {
           fontFamily: "'Jomhuria', sans-serif",
           letterSpacing: "0",
           WebkitTextStroke: "3px #000000",
-          textShadow: `
-            3px 3px 0px #000,
-            -3px -3px 0px #000,
-            3px -3px 0px #000,
-            -3px 3px 0px #000,
-            4px 4px 6px rgba(0,0,0,0.8)
-          `,
+          
           paintOrder: "stroke fill",
         } as React.CSSProperties}
         className="text-[2.7rem] sm:text-[4rem] lg:text-[4.8rem] leading-none font-normal text-[#E9E1CF]"
@@ -109,7 +105,7 @@ function CoSponsorsPanel() {
       >
         Co-Sponsors
       </h2>
-      <div className="bg-[#f5efe3] rounded-[10px] p-2 sm:p-3 grid grid-cols-2 gap-2 sm:gap-3 flex-1">
+      <div className="bg-[#f5efe3] rounded-[10px] p-3 pt-6 sm:p-3 grid grid-cols-2 gap-2 sm:gap-3 flex-1">
         {coSponsors.slice(0,6).map((logo, i) => (
           <img
             key={i}
@@ -159,7 +155,7 @@ function Footer() {
 export default function Sponsors() {
   return (
     <div className="bg-[#e9e3d5] min-h-screen p-3 sm:p-4 lg:p-6 flex justify-center" id="sponsors-section">
-      <div className="w-full max-w-6xl">
+      <div className="w-full">
 
         {/* Banner */}
         <SponsorsBanner />

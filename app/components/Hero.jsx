@@ -117,10 +117,10 @@ const Navbar = () => {
           }}
         />
       </button> */}
-      <div className="flex flex-row justify-end flex-1 gap-x-6 text-xl md:text-3xl md:gap-x-15 text-white" style={{ fontFamily: "'Jomhuria'"}}>
-        <div className="cursor-pointer text-[#E9E1CF] tracking-wider hover:translate-x-1 transition-all duration-300 ease-in-out" onClick={() => scrollToEvents('events-section')}>About</div>
-        <div className="cursor-pointer text-[#E9E1CF] tracking-wider hover:translate-x-1 transition-all duration-300 ease-in-out" onClick={() => scrollToEvents('sponsors-section')}>Sponsors</div>
-        <div className="cursor-pointer text-[#E9E1CF] tracking-wider hover:translate-x-1 transition-all duration-300 ease-in-out" onClick={() => scrollToEvents('contacts-section')}>Contact</div>
+      <div className="flex flex-row justify-end flex-1 gap-x-6 text-xl md:text-3xl md:gap-x-15 text-white" style={{ fontFamily: "'Jomhuria'", opacity: 0.9}}>
+        <div className="cursor-pointer text-[#f5f5f5] tracking-wider hover:translate-x-1 transition-all duration-300 ease-in-out uppercase" onClick={() => scrollToEvents('events-section')}>About</div>
+        <div className="cursor-pointer text-[#f5f5f5] tracking-wider hover:translate-x-1 transition-all duration-300 ease-in-out uppercase" onClick={() => scrollToEvents('sponsors-section')}>Sponsors</div>
+        <div className="cursor-pointer text-[#f5f5f5] tracking-wider hover:translate-x-1 transition-all duration-300 ease-in-out uppercase" onClick={() => scrollToEvents('contacts-section')}>Contact</div>
       </div>
     </div>
   </nav>)
@@ -366,7 +366,7 @@ export const Hero = () => {
             style={{
               
               position: "absolute",
-              top: 0,
+              top: -2,
               left: 0,
               width: "clamp(80px, 10vw, 25vw)",
               height: "auto",
