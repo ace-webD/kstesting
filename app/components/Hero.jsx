@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import VortexGallery from "./Vortex";
+import VortexGallery from "./VortexAutomatic";
+import VortexPilesAdvanced from "./VortexPilesAdvanced";
 
 const SUZHAL_TRANSLATIONS = [
   { text: "சுழல்", lang: "Tamil" },
@@ -11,9 +12,6 @@ const SUZHAL_TRANSLATIONS = [
   { text: "ಸುಳಿ", lang: "Kannada" },
   { text: "भँवर", lang: "Hindi" },
 ];
-
-
-
 /*
   Diagonal fabric/canvas texture — CSS-only pattern that looks like
   the woven linen texture from the reference image.
@@ -21,38 +19,30 @@ const SUZHAL_TRANSLATIONS = [
 const CANVAS_TEXTURE_STYLE = {
   position: "fixed",
   inset: 0,
-  zIndex: 50,
+  zIndex: 500,
   pointerEvents: "none",
-  opacity: 0.6,
-  mixBlendMode: "multiply",
-  backgroundImage: `
-    repeating-linear-gradient(
-      135deg,
-      rgba(100,90,70,0.55) 0px,
-      rgba(100,90,70,0.55) 1px,
-      transparent 1px,
-      transparent 3px
-    ),
-    repeating-linear-gradient(
-      45deg,
-      rgba(100,90,70,0.35) 0px,
-      rgba(100,90,70,0.35) 1px,
-      transparent 1px,
-      transparent 3px
-    )
-  `,
-  backgroundSize: "5px 5px, 5px 5px",
+  opacity: 0.8,
+  mixBlendMode: "normal",
+  backgroundImage: "url('/texture.png')", // make sure path is correct
+  backgroundRepeat: "repeat",
 };
 
 /* ===== Navbar Component ===== */
-const Navbar = () => (
+const Navbar = () => {
+  const scrollToEvents = (name) => {
+    const element = document.getElementById(name);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+  return(
   <nav
     style={{
       position: "fixed",
       top: 0,
       left: 0,
       right: 0,
-      zIndex: 100,
+      zIndex: 999,
       display: "flex",
       flexDirection: "column",
     }}
@@ -87,7 +77,7 @@ const Navbar = () => (
         }}
       />
       {/* Hamburger menu */}
-      <button
+      {/* <button
         style={{
           background: "none",
           border: "none",
@@ -126,10 +116,15 @@ const Navbar = () => (
             borderRadius: 2,
           }}
         />
-      </button>
+      </button> */}
+      <div className="flex flex-row justify-end flex-1 gap-x-6 text-xl md:text-3xl md:gap-x-15 text-white" style={{ fontFamily: "'Jomhuria'"}}>
+        <div className="cursor-pointer text-[#E9E1CF] tracking-wider hover:translate-x-1 transition-all duration-300 ease-in-out" onClick={() => scrollToEvents('events-section')}>About</div>
+        <div className="cursor-pointer text-[#E9E1CF] tracking-wider hover:translate-x-1 transition-all duration-300 ease-in-out" onClick={() => scrollToEvents('sponsors-section')}>Sponsors</div>
+        <div className="cursor-pointer text-[#E9E1CF] tracking-wider hover:translate-x-1 transition-all duration-300 ease-in-out" onClick={() => scrollToEvents('contacts-section')}>Contact</div>
+      </div>
     </div>
-  </nav>
-);
+  </nav>)
+}
 
 export const Hero = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -197,7 +192,8 @@ export const Hero = () => {
 
         {/* Animated photo vortex overlay */}
         <div style={{ position: "absolute", inset: 0, zIndex: 1}}>
-          <VortexGallery />
+          {/* <VortexGallery /> */}
+          <VortexPilesAdvanced />
         </div>
 
         {/* Title content */}
@@ -316,6 +312,7 @@ export const Hero = () => {
           padding: "clamp(8px, 1.5vw, 16px)",
           backgroundColor: "#E9E1CF"
         }}
+        className=""
       >
         {/* Inner comic panel */}
         <div
@@ -325,13 +322,20 @@ export const Hero = () => {
             overflow: "hidden",
             border: "clamp(2px, 0.3vw, 3px) solid #2c3e50",
             borderRadius: "clamp(10px, 1.5vw, 16px)",
-            background:
-              "linear-gradient(180deg, #b8cad4 0%, #c8d4dc 30%, #d4dce4 100%)",
-            boxShadow:
-              "clamp(3px, 0.5vw, 5px) clamp(4px, 0.6vw, 7px) 0px rgba(0,0,0,1)",
             minHeight: "clamp(30vh, 40vh, calc(45vh - 40px))",
           }}
         >
+          <div
+            style={{
+              position: "absolute",
+              inset: 0,
+              zIndex: 2,
+              backgroundImage: "url('/vortex_bg_gradient.png')",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+            }}
+          />
           {/* Cloud SVG at top */}
           <div
             style={{
@@ -364,7 +368,7 @@ export const Hero = () => {
               position: "absolute",
               top: 0,
               left: 0,
-              width: "clamp(140px, 20vw, 25vw)",
+              width: "clamp(80px, 10vw, 25vw)",
               height: "auto",
               zIndex: 3,
               pointerEvents: "none",
@@ -375,9 +379,9 @@ export const Hero = () => {
             alt=""
             style={{
               position: "absolute",
-              bottom: 0,
+              top: "35%",
               left: 0,
-              width: "clamp(180px, 25vw, 25vw)",
+              width: "clamp(80px, 15vw, 25vw)",
               height: "auto",
               zIndex: 3,
               pointerEvents: "none",
@@ -390,7 +394,7 @@ export const Hero = () => {
               position: "absolute",
               top: 0,
               right: 0,
-              width: "clamp(140px, 20vw, 20vw)",
+              width: "clamp(80px, 10vw, 20vw)",
               height: "auto",
               zIndex: 3,
               pointerEvents: "none",
@@ -401,9 +405,9 @@ export const Hero = () => {
             alt=""
             style={{
               position: "absolute",
-              bottom: 0,
+              top: "35%",
               right: 0,
-              width: "clamp(120px, 15vw, 15vw)",
+              width: "clamp(50px, 5vw, 15vw)",
               height: "auto",
               zIndex: 3,
               pointerEvents: "none",
@@ -419,7 +423,7 @@ export const Hero = () => {
               minHeight: "clamp(30vh, 50vh, calc(45vh - 40px))",
               padding: "clamp(10px, 2vw, 20px) 0",
               position: "relative",
-              zIndex: 4,
+              zIndex: 2,
             }}
           >
             <div
@@ -457,7 +461,7 @@ export const Hero = () => {
   className={`
     transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]
     ${isAnimating 
-      ? "opacity-0 scale-75 translate-y-2 blur-md rotate-180" 
+      ? "opacity-0 scale-75 translate-y-2 blur-md" 
       : "opacity-100 scale-100 translate-y-0 blur-0 rotate-0"}
   `}
 >

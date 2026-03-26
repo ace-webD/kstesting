@@ -3,13 +3,21 @@ import React from "react";
 // ─── Data ────────────────────────────────────────────────────────────────────
 
 const coSponsors = [
+  "/logos/farmley.png",
   "/logos/bharath.png",
-  "/logos/farmley.png"
+  "/logos/WhyWhyTatoo.jpg",
+  "/logos/Veggies_express.png",
+  "/logos/Lounge.png",
+  "/logos/thoovibridals.jpg",
+  "/logos/lemonly .jpeg",
+  "/logos/land of tales.png",
+  "/logos/FullStop.jpeg",
+  "/logos/cuephoria.png",
 ];
 
 const sponsorRows = [
-  ["/logos/cub.jpg", "/logos/veranda.png","/logos/airtel.jpg",  "/logos/palanivel.jpg"],
-  ["/logos/pepsi.png", "/logos/2iim.png" , "/logos/az.png"],
+  ["/logos/cub.jpg", "/logos/veranda.png","/logos/palanivel.jpg"],
+  ["/logos/pepsi.png", "/logos/2iim.png" , "/logos/az.png", ],
 ];
 
 // ─── Sub-components ──────────────────────────────────────────────────────────
@@ -97,12 +105,34 @@ function CoSponsorsPanel() {
     <div className="bg-[#2c3e50] rounded-2xl p-3 sm:p-4 text-white flex flex-col md:w-[342px] md:h-[558px] mx-auto">
       <h2
         style={{ fontFamily: "'Jomhuria', sans-serif", letterSpacing: "0" }}
-        className="text-[2.28rem] md:text-[4.84rem] font-normal text-center mb-2 sm:mb-3 leading-none"
+        className="text-[2.28rem] md:text-[4.84rem] font-normal text-center mb-2 sm:mb-3 leading-none text-[#E9E1CF]"
       >
         Co-Sponsors
       </h2>
-      <div className="bg-[#E9E1CF] rounded-[10px] p-2 sm:p-3 grid grid-cols-2 gap-2 sm:gap-3 flex-1">
-        {coSponsors.map((logo, i) => (
+      <div className="bg-[#f5efe3] rounded-[10px] p-2 sm:p-3 grid grid-cols-2 gap-2 sm:gap-3 flex-1">
+        {coSponsors.slice(0,6).map((logo, i) => (
+          <img
+            key={i}
+            src={logo}
+            className="h-10 sm:h-12 lg:h-[82px] object-contain mx-auto w-full"
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function CoSponsorsPanel1() {
+  return (
+    <div className="bg-[#2c3e50] rounded-2xl p-3 sm:p-4 text-white flex flex-col md:w-[342px] md:h-[558px] mx-auto">
+      <h2
+        style={{ fontFamily: "'Jomhuria', sans-serif", letterSpacing: "0" }}
+        className="text-[2.28rem] md:text-[4.84rem] font-normal text-center mb-2 sm:mb-3 leading-none text-[#E9E1CF]"
+      >
+        Co-Sponsors
+      </h2>
+      <div className="bg-[#f5efe3] rounded-[10px] p-2 sm:p-3 grid grid-cols-2 gap-2 sm:gap-3 flex-1">
+        {coSponsors.slice(6).map((logo, i) => (
           <img
             key={i}
             src={logo}
@@ -128,7 +158,7 @@ function Footer() {
 
 export default function Sponsors() {
   return (
-    <div className="bg-[#e9e3d5] min-h-screen p-3 sm:p-4 lg:p-6 flex justify-center">
+    <div className="bg-[#e9e3d5] min-h-screen p-3 sm:p-4 lg:p-6 flex justify-center" id="sponsors-section">
       <div className="w-full max-w-6xl">
 
         {/* Banner */}
@@ -158,23 +188,19 @@ export default function Sponsors() {
           </div>
 
           {/* Right — Co-Sponsors */}
-          <div className="w-full md:w-[220px] lg:w-[280px] mx-auto mt-10 mb-20">
+          <div className="flex flex-col flex-wrap lg:flex-row">
+            <div className="w-full md:w-[220px] lg:w-[280px] mx-auto mt-10 mb-20">
             <CoSponsorsPanel />
+          </div>
+          <div className="w-full md:w-[220px] lg:w-[280px] mx-auto mt-10 mb-20">
+            <CoSponsorsPanel1 />
+          </div>
           </div>
 
         </div>
-        <div className="w-[100%] mb-6"> 
-          <svg width="100%" height="12" viewBox="0 0 800 12" preserveAspectRatio="none">
-            <line 
-              x1="0" y1="6" x2="800" y2="6" 
-              stroke="#2C3E50" 
-              strokeWidth="3" 
-              strokeDasharray="16 12"
-              strokeLinecap="round"
-            />
-          </svg>
-        </div>
+        
       </div>
+      
     </div>
   );
 }

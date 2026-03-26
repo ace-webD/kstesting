@@ -3,9 +3,14 @@ import { FaXTwitter } from "react-icons/fa6";
 import Image from "next/image";
 
 export default function Footer() {
+  const links = ["https://www.youtube.com/@sastrafotohub?si=MIuC5i2-YCzNgqCC",
+                  "https://www.instagram.com/kuruksastra?igsh=c3VrYWEwdXgydTNj",
+                "https://www.facebook.com/kssastra/",
+                "https://www.linkedin.com/company/kuruksastra/",
+                "https://x.com/kssastra?t=m_rRvKLpVIyeU_rN9FSBiA&s=09", ]
   const date = new Date()
   return (
-    <footer className="w-full h-auto min-h-screen relative bg-[#213447] overflow-hidden flex flex-col items-center pt-[clamp(20px,4vw,60px)] pb-[clamp(20px,4vw,40px)]">
+    <footer id="contacts-section" className="w-full h-auto min-h-screen relative bg-[#213447] overflow-hidden flex flex-col items-center pt-[clamp(20px,4vw,60px)] pb-[clamp(20px,4vw,40px)]">
       
       <div className="w-full h-full relative flex flex-col items-center z-10 px-[4vw] md:px-0" style={{ fontFamily: "'Jomhuria', sans-serif", fontWeight: 400 }}>
 
@@ -48,16 +53,16 @@ export default function Footer() {
               </div>
 
               <div className="bg-[#6b8baf] min-h-[clamp(30px,6vw,75px)] flex items-center justify-center px-2 text-center border-b-[clamp(2px,0.4vw,3px)] border-black">
-                <p className="text-white text-[clamp(8px,2vw,36px)] uppercase leading-[0.9] whitespace-pre-line">
+                <p className="text-white text-[clamp(8px,4vw,36px)] uppercase leading-[0.9] whitespace-pre-line">
                   {card.role}
                 </p>
               </div>
 
               <div className="bg-[#e3dcc8] flex-1 flex flex-col items-center justify-center gap-1 px-1">
-                <p className="text-[clamp(10px,2.5vw,50px)] text-black leading-none font-bold md:font-normal mt-1">
+                <p className="text-[clamp(10px,4vw,50px)] text-black leading-none font-bold md:font-normal mt-1">
                   {card.name}
                 </p>
-                <p className="text-black text-[clamp(9px,2vw,36px)] leading-none font-bold md:font-normal">
+                <p className="text-black text-[clamp(9px,4vw,36px)] leading-none font-bold md:font-normal">
                   {card.phone}
                 </p>
               </div>
@@ -75,7 +80,7 @@ export default function Footer() {
 
           <div className="flex gap-[clamp(4px,1vw,20px)] flex-wrap justify-end">
             {[FaYoutube, FaInstagram, FaFacebook, FaLinkedin, FaXTwitter].map((Icon, i) => (
-              <a key={i} href="#" className="w-[clamp(24px,5vw,48px)] h-[clamp(24px,5vw,48px)] bg-black rounded-[clamp(6px,1vw,12px)] flex items-center justify-center text-[#e3dcc8] hover:scale-110 transition-transform">
+              <a key={i} href={links[i]} className="w-[clamp(24px,5vw,48px)] h-[clamp(24px,5vw,48px)] bg-black rounded-[clamp(6px,1vw,12px)] flex items-center justify-center text-[#e3dcc8] hover:scale-110 transition-transform">
                 <Icon className="text-[clamp(12px,2.5vw,26px)]" />
               </a>
             ))}
@@ -83,9 +88,9 @@ export default function Footer() {
         </div>
 
         {/* Bottom */}
-        <div className="flex flex-row justify-between items-center px-[4vw] text-[#6b8baf] text-[clamp(10px,2vw,32px)] mt-auto mb-[20px] w-[95%] font-sans">
-          <p>@{date.getFullYear()} kuruksastra</p>
-          <p>Made with ❤ by 300DPI &amp; ACE</p>
+        <div className="flex flex-row justify-between items-center px-[4vw] text-[#6b8baf] text-[clamp(5px,5vw,32px)] mt-auto mb-[20px] w-[95%] font-sans">
+          <p style={{ fontFamily: "'Jomhuria', sans-serif" }}>@{date.getFullYear()} kuruksastra</p>
+          <p style={{ fontFamily: "'Jomhuria', sans-serif" }}>Made with ❤ by 300DPI &amp; ACE</p>
         </div>
 
       </div>

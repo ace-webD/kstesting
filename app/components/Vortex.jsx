@@ -40,7 +40,17 @@ const photoNames = ["vortex1.jpg",
       "vortex9.jpg",
       "vortex10.jpg",
       "vortex11.jpg",
-      "vortex12.jpg"
+      "vortex12.jpg",
+      "vortex13.jpg",
+      "vortex14.jpg",
+      "vortex15.jpg",
+      "vortex16.jpg",
+      "vortex17.jpg",
+      "vortex18.jpg",
+      "vortex19.jpg",
+      "vortex20.jpg",
+      "vortex21.jpg",
+      "vortex22.jpg"
     ]
 function getRandomElements(arr) {
   // Shuffle a copy of the input array (Fisher‑Yates)

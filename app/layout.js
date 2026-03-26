@@ -20,6 +20,9 @@ const jomhuria = Jomhuria({
 export const metadata = {
   title: "Kuruksastra'26",
   description: "",
+  icons: {
+    icon: "/favicon.png"
+  }
 };
 
 export default function RootLayout({ children }) {
