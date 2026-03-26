@@ -193,7 +193,7 @@ export const Hero = () => {
         {/* Animated photo vortex overlay */}
         <div style={{ position: "absolute", inset: 0, zIndex: 1}}>
           {/* <VortexGallery /> */}
-          <VortexPilesAdvanced />
+          {/* <VortexPilesAdvanced /> */}
         </div>
 
         {/* Title content */}
