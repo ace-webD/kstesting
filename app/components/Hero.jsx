@@ -2,8 +2,9 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import VortexGallery from "./VortexAutomatic";
-import VortexPilesAdvanced from "./VortexPilesAdvanced";
+import VortexGallery from "./VortexDPI"
+// import VortexGallery from "./Vortex"
+import Link from "next/link";
 
 const SUZHAL_TRANSLATIONS = [
   { text: "சுழல்", lang: "Tamil" },
@@ -16,19 +17,19 @@ const SUZHAL_TRANSLATIONS = [
   Diagonal fabric/canvas texture — CSS-only pattern that looks like
   the woven linen texture from the reference image.
 */
-const CANVAS_TEXTURE_STYLE = {
+export const CANVAS_TEXTURE_STYLE = {
   position: "fixed",
   inset: 0,
   zIndex: 500,
   pointerEvents: "none",
-  opacity: 0.8,
+  opacity: 0.7,
   mixBlendMode: "normal",
   backgroundImage: "url('/texture.png')", // make sure path is correct
   backgroundRepeat: "repeat",
 };
 
 /* ===== Navbar Component ===== */
-const Navbar = () => {
+export const Navbar = () => {
   const scrollToEvents = (name) => {
     const element = document.getElementById(name);
     if (element) {
@@ -42,13 +43,12 @@ const Navbar = () => {
       top: 0,
       left: 0,
       right: 0,
-      zIndex: 999,
+      zIndex: 99999,
       display: "flex",
       flexDirection: "column",
+      CANVAS_TEXTURE_STYLE
     }}
   >
-
-    {/* Dark navbar body */}
     <div
       style={{
         display: "flex",
@@ -61,7 +61,8 @@ const Navbar = () => {
       }}
     >
       {/* Logo */}
-      <Image
+      <Link href={"/"}>
+        <Image
         src="/ks_logo.png"
         alt="Kuruksastra"
         color="#E9E1CF"
@@ -75,51 +76,11 @@ const Navbar = () => {
           cursor: "pointer",
         }}
       />
-      {/* Hamburger menu */}
-      {/* <button
-        style={{
-          background: "none",
-          border: "none",
-          cursor: "pointer",
-          display: "flex",
-          flexDirection: "column",
-          gap: "clamp(3px, 0.5vw, 5px)",
-          padding: "clamp(6px, 1vw, 8px)",
-        }}
-        aria-label="Menu"
-      >
-        <span
-          style={{
-            display: "block",
-            width: "clamp(20px, 2.5vw, 26px)",
-            height: "clamp(2px, 0.3vw, 2.5px)",
-            background: "#e8e0d0",
-            borderRadius: 2,
-          }}
-        />
-        <span
-          style={{
-            display: "block",
-            width: "clamp(20px, 2.5vw, 26px)",
-            height: "clamp(2px, 0.3vw, 2.5px)",
-            background: "#e8e0d0",
-            borderRadius: 2,
-          }}
-        />
-        <span
-          style={{
-            display: "block",
-            width: "clamp(20px, 2.5vw, 26px)",
-            height: "clamp(2px, 0.3vw, 2.5px)",
-            background: "#e8e0d0",
-            borderRadius: 2,
-          }}
-        />
-      </button> */}
+      </Link>
       <div className="flex flex-row justify-end flex-1 gap-x-6 text-xl md:text-3xl md:gap-x-15 text-white" style={{ fontFamily: "'Jomhuria'", opacity: 0.9}}>
-        <div className="cursor-pointer text-[#f5f5f5] tracking-wider hover:translate-x-1 transition-all duration-300 ease-in-out uppercase" onClick={() => scrollToEvents('events-section')}>About</div>
-        <div className="cursor-pointer text-[#f5f5f5] tracking-wider hover:translate-x-1 transition-all duration-300 ease-in-out uppercase" onClick={() => scrollToEvents('sponsors-section')}>Sponsors</div>
-        <div className="cursor-pointer text-[#f5f5f5] tracking-wider hover:translate-x-1 transition-all duration-300 ease-in-out uppercase" onClick={() => scrollToEvents('contacts-section')}>Contact</div>
+        <div className="cursor-pointer text-[#f5f5f5] tracking-wider hover:translate-x-1 transition-all duration-300 ease-in-out uppercase" ><Link href={"/about"}>About</Link></div>
+        <div className="cursor-pointer text-[#f5f5f5] tracking-wider hover:translate-x-1 transition-all duration-300 ease-in-out uppercase" ><Link href={"/sponsors"}>Sponsors</Link></div>
+        <div className="cursor-pointer text-[#f5f5f5] tracking-wider hover:translate-x-1 transition-all duration-300 ease-in-out uppercase" ><Link href={"/contact"}>Contact</Link></div>
       </div>
     </div>
   </nav>)
@@ -165,7 +126,7 @@ export const Hero = () => {
       <div style={CANVAS_TEXTURE_STYLE} />
 
       {/* ===== NAVBAR ===== */}
-      <Navbar />
+      
 
       {/* ===== TOP SECTION — Gradient background with logo ===== */}
       <div
@@ -191,8 +152,7 @@ export const Hero = () => {
 
         {/* Animated photo vortex overlay */}
         <div style={{ position: "absolute", inset: 0, zIndex: 1}}>
-          {/* <VortexGallery /> */}
-          {/* <VortexPilesAdvanced /> */}
+          <VortexGallery />
         </div>
 
         {/* Title content */}

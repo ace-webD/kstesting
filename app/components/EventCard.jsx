@@ -1,4 +1,8 @@
-export default function EventCard({EventLink, EventName, EventImage, EventContent}) {
+import Image from "next/image";
+import { CANVAS_TEXTURE_STYLE } from "./Hero";
+
+
+export const EventCard = ({EventLink, EventName, EventImage, EventContent}) => {
 
  
   return (
@@ -57,6 +61,60 @@ export default function EventCard({EventLink, EventName, EventImage, EventConten
           </a>
 
       </div>
+    </div>
+  );
+}
+
+
+export const Events = () => {
+  return (
+    <div className="texture-overlay overflow-auto bg-[#f4eedf] min-h-screen px-4 md:px-6 py-6 md:py-10 mt-10 md:mt-15" 
+      style={{ backgroundColor: '#E8E0D5', fontFamily: "'Jomhuria', cursive"}} >
+        <div style={CANVAS_TEXTURE_STYLE} />
+      {/* Header */}
+      <div
+                          className="w-full flex justify-between items-center px-4 md:px-8 lg:px-12 shadow-[4px_4px_0px_#000000] sm:shadow-[6px_6px_0px_#000000] bg-[#213447] h-[80px] sm:h-[105px] md:h-[132px] rounded-full border-[3px] md:border-[5px] border-black"
+                      >
+      
+      
+                          <div className="w-[40px] sm:w-[50px] md:w-[85px] shrink-0">
+                              <Image src="/spiral2.png" alt="Spiral Left" width={85} height={85} className="w-full h-auto object-contain mt-1" />
+                          </div>
+      
+      
+                          <h1
+                              className="text-center font-normal tracking-normal text-[55px] min-[400px]:text-[65px] sm:text-[90px] md:text-[112.9px] leading-[45px] sm:leading-[70px] md:leading-[80.79px] [-webkit-text-stroke:1px_#000] sm:[-webkit-text-stroke:2px_#000] md:[-webkit-text-stroke:3.17px_#000]"
+                              style={{
+                                  fontFamily: "'Jomhuria', serif, sans-serif",
+                                  fontWeight: 400,
+                                  letterSpacing: "0%",
+                                  color: "#E9E1CF",
+                                  paintOrder: "stroke fill",
+                              }}
+                          >
+                              EVENTS
+                          </h1>
+       
+                          <div className="w-[40px] sm:w-[50px] md:w-[85px] shrink-0">
+                              <Image src="/spiral2.png" alt="Spiral Right" width={85} height={85} className="w-full h-auto object-contain mt-1" />
+                          </div>
+                      </div>
+
+      {/* Event List */}
+      <div className="
+      
+        header-overlay
+        flex flex-col 
+        gap-6 md:gap-10 
+        pt-10 md:pt-16
+        max-w-[1200px] mx-auto
+      ">
+        <EventCard EventName={"Event1"} EventLink={"https://www.youtube.com"} EventImage={"/next.svg"} EventContent={"The one and only event"} />
+        <EventCard EventName={"Event2"} EventLink={"https://chatgpt.com/"} EventImage={"/spiral.png"} EventContent={"The one and only event event is not eventing  "}/>
+        <EventCard EventName={"Event3"} EventLink={"https://ace-sastra.vercel.app/"} EventImage={"/globe.svg"} EventContent={"brain is not braining"}/>
+        <EventCard EventName={"Event4"} EventLink={"https://webstream.sastra.edu/sastrapwi/"} EventImage={"/file.svg"} EventContent={"making fun around troubles"}/>
+      </div>
+
     </div>
   );
 }

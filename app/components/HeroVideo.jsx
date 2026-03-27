@@ -53,15 +53,21 @@ export default function HeroVideo({ children, cardVideoRef, src = "/asithappen.m
         return;
       }
 
-      // ── EXIT phase: runway scrolling off the top — fade video out ──
-      if (rRect.bottom < vh) {
-        const fade = Math.max(0, rRect.bottom / vh);
-        overlay.style.opacity = String(fade);
-        if (cardVideoRef?.current)
-          cardVideoRef.current.style.opacity = String(1 - fade);
-        return;
-      }
-
+     // ── EXIT phase ──
+if (rRect.bottom < vh) {
+  if (rRect.bottom <= 0) {
+    overlay.style.opacity = "0";
+    if (cardVideoRef?.current) cardVideoRef.current.style.opacity = "1";
+    return;
+  }
+  // Shrink bottom edge with scroll — next section slides up beneath
+  overlay.style.opacity = "1";
+  overlay.style.top    = "0px";
+  overlay.style.left   = "0px";
+  overlay.style.width  = `${window.innerWidth}px`;
+  overlay.style.height = `${rRect.bottom}px`;  // ← key line
+  return;
+}
       // ── ENTER phase: capture card rect once at sticky position ──
       if (!hasStarted) {
         measure();
@@ -101,7 +107,7 @@ export default function HeroVideo({ children, cardVideoRef, src = "/asithappen.m
   return (
     <>
       {/* Runway: 250vh scroll space. Card sticky-pins inside on desktop only. */}
-      <div ref={runwayRef} style={{ height: isDesktop ? "250vh" : "auto" }}>
+      <div ref={runwayRef} style={{ height: isDesktop ? "200vh" : "auto" }}>
         <div style={{ position: isDesktop ? "sticky" : "relative", top: 0 }}>
           {children}
         </div>

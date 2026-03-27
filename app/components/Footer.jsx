@@ -59,10 +59,10 @@ export default function Footer() {
               </div>
 
               <div className="bg-[#e3dcc8] flex-1 flex flex-col items-center justify-center gap-1 px-1">
-                <p className="text-[clamp(19px,4vw,50px)] text-black leading-none font-bold md:font-normal mt-1 tracking-wide">
+                <p className="text-[clamp(19px,4vw,50px)] text-black  leading-none md:font-normal mt-1 tracking-wide">
                   {card.name}
                 </p>
-                <p className="text-black text-[clamp(19px,4vw,36px)] leading-none font-bold md:font-normal tracking-wide">
+                <p className="text-black text-[clamp(15px,3.5vw,36px)] leading-none md:font-normal tracking-normal">
                   {card.phone}
                 </p>
               </div>

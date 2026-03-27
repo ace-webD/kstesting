@@ -37,20 +37,20 @@ export const EventSection = () => {
           <div className="flex flex-row md:flex-row overflow-visible">
             <div className="flex-1 py-6 md:py-8 pl-3 flex flex-col justify-center">
               <h2
-                className="text-white text-[clamp(1rem,4vw,3rem)] text-left md:text-center mb-2 text-center whitespace-nowrap break-words"
+                className="text-white text-[clamp(1rem,4vw,3rem)] text-left md:text-left md:pl-2 md:leading-12 md:text-[3.7rem] mb-2 text-center whitespace-nowrap break-words"
                 style={{ textShadow: "2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000", zIndex: 550 }}
               >
                 Experience the cultural whirlwind.
               </h2>
               <p
-                className="text-white text-[clamp(1rem,4vw,3rem)] text-left md:text-center"
+                className="text-white text-[clamp(1rem,4vw,3rem)] text-left md:text-left md:pl-2 md:text-[3.7rem] md:leading-12"
                 style={{ textShadow: "2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000", zIndex: 550 }}
               >
                 Join the celebration where talent, passion, and creativity collide.
               </p>
             </div>
             <div className="relative w-full md:w-[30%] flex items-center justify-center overflow-visible">
-              <div className="relative w-[clamp(90px,40vw,270px)] aspect-[5.6/5] bottom-[-8px]">
+              <div className="relative w-[clamp(90px,40vw,270px)] aspect-[5.6/5] bottom-[-10px] md:bottom-[-14px] lg:bottom-[-7px]">
                 <Image src="/image_something.png" fill alt='event photos' className='object-cover scale-100' />
               </div>
             </div>
@@ -59,9 +59,9 @@ export const EventSection = () => {
             className="w-full py-3 px-6 flex flex-row justify-center md:justify-between items-center gap-4"
             style={{ backgroundColor: '#2C3E50', borderTop: "4px solid black" }}
           >
-            <span className="text-white text-[clamp(0.9rem,2.5vw,2rem)] tracking-wide whitespace-nowrap" style={{ textShadow: "2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000", zIndex: 550 }}>CREATIVITY UNLEASHED</span>
-            <span className="text-white text-[clamp(0.9rem,2.5vw,2rem)] tracking-wide whitespace-nowrap" style={{ textShadow: "2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000", zIndex: 550 }}>3 DAYS OF ENERGY</span>
-            <span className="text-white text-[clamp(0.9rem,2.5vw,2rem)] tracking-wide whitespace-nowrap" style={{ textShadow: "2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000", zIndex: 550 }}>EVENTS THAT INSPIRE</span>
+            <span className="text-white text-[clamp(0.9rem,2.5vw,2rem)] tracking-wide whitespace-nowrap md:px-5 md:text-[2rem] lg:text-[2.5rem] " style={{ textShadow: "2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000", zIndex: 550 }}>CREATIVITY UNLEASHED</span>
+            <span className="text-white text-[clamp(0.9rem,2.5vw,2rem)] tracking-wide whitespace-nowrap md:px-5 md:text-[2rem] lg:text-[2.5rem] " style={{ textShadow: "2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000", zIndex: 550 }}>3 DAYS OF ENERGY</span>
+            <span className="text-white text-[clamp(0.9rem,2.5vw,2rem)] tracking-wide whitespace-nowrap md:px-5 md:text-[2rem] lg:text-[2.5rem] " style={{ textShadow: "2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000", zIndex: 550 }}>EVENTS THAT INSPIRE</span>
           </div>
         </div>
 
@@ -77,21 +77,21 @@ export const EventSection = () => {
         {/* ── Stats Card wrapped in HeroVideo ── */}
         <HeroVideo cardVideoRef={cardVideoRef}>
           <div
-            className="rounded-md border-4 p-1 md:p-4"
+            className="rounded-md border-4 md:p-4 h-32 md:h-45 lg:h-70 xl:h-83"
             style={{ backgroundColor: '#E8E0D5', boxShadow: "clamp(3px, 0.5vw, 5px) clamp(4px, 0.6vw, 7px) 0px #000000" }}
           >
-            <div className="flex flex-col items-center justify-center gap-1 text-center">
+            <div className="flex flex-col items-center justify-center gap-1 text-center md:mt-[-30px] ">
               <div className="flex flex-col items-center justify-center gap-2 flex-wrap">
                 <div className='flex flex-row gap-3 md:gap-5 items-center flex-wrap justify-center mb-[-40px] md:mb-3'>
-                  <span className="text-[clamp(2.5rem,8vw,8rem)] whitespace-nowrap text-center" style={{ color: '#213447', zIndex: 550 }}>3 DAYS</span>
+                  <span className="text-[clamp(2.5rem,12vw,10rem)] whitespace-nowrap text-center" style={{ color: '#213447', zIndex: 550 }}>3 DAYS</span>
                   <img src="/spiral.png" alt="Spiral" className="w-[clamp(40px,6vw,64px)] h-[clamp(40px,6vw,64px)]" />
-                  <span className="text-[clamp(2.5rem,8vw,8rem)] whitespace-nowrap text-center p-0 m-0" style={{ color: '#213447', zIndex: 550 }}>60+ EVENTS</span>
+                  <span className="text-[clamp(2.5rem,12vw,8rem)] whitespace-nowrap text-center " style={{ color: '#213447', zIndex: 550 }}>60+ EVENTS</span>
                 </div>
-                <div className="flex items-center justify-center gap-6 w-full mb-[-10px] md:my-[-50px] py-5 md:pt-8 md:pb-12">
+                <div className="flex items-center justify-center gap-6 w-full mb-[-10px] md:my-[-50px] py-5 md:pb-12">
                   {/* ── ref placed on the video wrapper ── */}
                   <div
                     ref={cardVideoRef}
-                    className="relative w-[clamp(100px,40vw,270px)] aspect-[8/3.5] overflow-hidden rounded-xl border-4 hidden lg:block"
+                    className="md:mt-[-40px] relative w-[clamp(100px,40vw,270px)] aspect-[8/3.5] overflow-hidden rounded-xl border-4 hidden lg:block"
                   >
                     <video
                       src="/asithappen.mp4"
@@ -99,7 +99,7 @@ export const EventSection = () => {
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <span className="text-[clamp(2.5rem,8vw,8rem)] whitespace-nowrap" style={{ color: '#213447', zIndex: 550 }}>
+                  <span className="text-[clamp(2.5rem,12vw,8rem)] whitespace-nowrap md:mt-[-50px] lg:mt-[-80px]" style={{ color: '#213447', zIndex: 550 }}>
                     5L+ PRIZE POOL
                   </span>
                 </div>

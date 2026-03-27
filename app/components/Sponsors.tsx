@@ -22,7 +22,11 @@ const sponsorRows = [
 ];
 
 // ─── Sub-components ──────────────────────────────────────────────────────────
-
+const rows = [
+  coSponsors.slice(0, 3),  // first 3
+  coSponsors.slice(3, 6),  // next 3
+  coSponsors.slice(6, 10), // next 4
+];
 function Spiral() {
   return (
     <svg
@@ -84,7 +88,7 @@ function MainSponsorsGrid() {
             <img
               key={i}
               src={logo}
-              className="h-10 sm:h-10 md:h-15 w-auto object-contain"
+              className={`h-10 sm:h-10 md:h-15 w-auto object-contain ${((i===0 && rowIndex==0) || (i===1 && rowIndex==1)) ? 'h-11 sm:h-12 md:h-20 lg:h-22' : ''}`}
               style={{
                 mixBlendMode: "multiply",
                 background: "transparent",
@@ -108,15 +112,26 @@ function CoSponsorsPanel() {
       >
         Co-Sponsors
       </h2>
-      <div className="bg-[#e9e1cf] rounded-[10px] p-3 p sm:p-3 grid grid-cols-2 gap-2 sm:gap-3 flex-1 w-full border-t-4 border-black">
-        {coSponsors.map((logo, i) => (
-          <img
-            key={i}
-            src={logo}
-            className="h-10 sm:h-12 lg:h-[78px] object-contain mx-auto w-full"
-          />
-        ))}
-      </div>
+      <div className="bg-[#e9e1cf] rounded-[10px] p-3 sm:p-3 flex flex-col gap-19 border-t-4 border-black">
+
+  {rows.map((row, rowIndex) => (
+    <div
+      key={rowIndex}
+      className={`grid gap-1 sm:gap-3 items-center justify-center ${
+        rowIndex < 2 ? "grid-cols-3" : "grid-cols-4"
+      }`}
+    >
+      {row.map((logo, i) => (
+        <img
+          key={i}
+          src={logo}
+          className="h-20 lg:h-[78px] object-contain mx-auto w-full"
+        />
+      ))}
+    </div>
+  ))}
+
+</div>
     </div>
   );
 }
@@ -135,7 +150,7 @@ function Footer() {
 
 export default function Sponsors() {
   return (
-    <div className="bg-[#e9e3d5] min-h-screen p-3 sm:p-4 lg:p-6 flex justify-center" id="sponsors-section">
+    <div className="bg-[#e9e3d5] min-h-screen p-3 sm:p-4 lg:p-6 flex justify-center" id="sponsors-section" style={{position: "relative",zIndex: 400}}>
       <div className="w-full">
 
         {/* Banner */}
