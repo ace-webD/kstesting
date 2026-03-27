@@ -152,7 +152,7 @@ export const Hero = () => {
 
         {/* Animated photo vortex overlay */}
         <div style={{ position: "absolute", inset: 0, zIndex: 1}}>
-          <VortexGallery />
+          {/* <VortexGallery /> */}
         </div>
 
         {/* Title content */}
@@ -221,7 +221,7 @@ export const Hero = () => {
                   "clamp(1px, 0.2vw, 2px) clamp(2px, 0.4vw, 4px) 0px rgba(0,0,0,1)",
               }}
             >
-              A Cultural Vortex
+              The Cultural Vortex
             </p>
             <span
               style={{

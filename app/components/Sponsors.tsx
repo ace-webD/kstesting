@@ -8,9 +8,9 @@ const coSponsors = [
   "/logos/WhyWhyTatoo.jpg",
   "/logos/Veggies_express.png",
   "/logos/Lounge.png",
-  "/logos/thoovibridals.jpg",
-  "/logos/lemonly .jpeg",
   "/logos/land of tales.png",
+  "/logos/lemonly .jpeg",
+  "/logos/thoovibridals.jpg",
   "/logos/FullStop.jpeg",
   "/logos/cuephoria.png",
 ];
@@ -76,7 +76,7 @@ function SponsorsBanner() {
 
 function MainSponsorsGrid() {
   return (
-    <div className="flex flex-col justify-evenly mb-20 lg:gap-y-12">
+    <div className="flex flex-col justify-evenly mb-22 lg:gap-y-12">
       {sponsorRows.map((row, rowIndex) => (
         <div
           key={rowIndex}
@@ -88,7 +88,7 @@ function MainSponsorsGrid() {
             <img
               key={i}
               src={logo}
-              className={`h-10 sm:h-10 md:h-15 w-auto object-contain ${((i===0 && rowIndex==0) || (i===1 && rowIndex==1)) ? 'h-11 sm:h-12 md:h-20 lg:h-22' : ''}`}
+              className={`h-10 sm:h-10 md:h-15 w-auto object-contain ${((i===0 && rowIndex==0) || (i===1 && rowIndex==1) || (i===0 && rowIndex===2)) ? 'h-11 sm:h-12 md:h-20 lg:h-22' : ''}`}
               style={{
                 mixBlendMode: "multiply",
                 background: "transparent",
@@ -112,7 +112,7 @@ function CoSponsorsPanel() {
       >
         Co-Sponsors
       </h2>
-      <div className="bg-[#e9e1cf] rounded-[10px] p-3 sm:p-3 flex flex-col gap-19 border-t-4 border-black">
+      <div className="bg-[#e9e1cf] rounded-[10px] p-3 sm:p-3 flex flex-col gap-20 border-t-4 border-black">
 
   {rows.map((row, rowIndex) => (
     <div
@@ -150,8 +150,8 @@ function Footer() {
 
 export default function Sponsors() {
   return (
-    <div className="bg-[#e9e3d5] min-h-screen p-3 sm:p-4 lg:p-6 flex justify-center" id="sponsors-section" style={{position: "relative",zIndex: 400}}>
-      <div className="w-full">
+    <div className="bg-[#e9e3d5] p-3 sm:p-4 lg:p-6 flex justify-center" id="sponsors-section" style={{position: "relative",zIndex: 400}}>
+      <div className="w-full ">
 
         {/* Banner */}
         <SponsorsBanner />

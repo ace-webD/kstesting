@@ -10,7 +10,7 @@ export default function Footer() {
                 "https://x.com/kssastra?t=m_rRvKLpVIyeU_rN9FSBiA&s=09", ]
   const date = new Date()
   return (
-    <footer id="contacts-section" className="w-full h-auto min-h-screen relative bg-[#213447] overflow-hidden flex flex-col items-center pt-[clamp(20px,4vw,60px)] pb-[clamp(20px,4vw,40px)]">
+    <footer id="contacts-section" className="w-full h-auto relative bg-[#213447] overflow-hidden flex flex-col items-center pt-[clamp(20px,4vw,60px)] pb-[clamp(20px,4vw,40px)]">
       
       <div className="w-full h-full relative flex flex-col items-center z-10 px-[4vw] md:px-0" style={{ fontFamily: "'Jomhuria', sans-serif", fontWeight: 400 }}>
 
@@ -53,7 +53,7 @@ export default function Footer() {
               </div>
 
               <div className="bg-[#6b8baf] min-h-[clamp(30px,6vw,75px)] flex items-center justify-center px-2 text-center border-b-[clamp(2px,0.4vw,3px)] border-black">
-                <p className="text-white text-[clamp(15px,4vw,36px)] uppercase leading-[0.9] whitespace-pre-line tracking-wide">
+                <p className="text-white text-[clamp(15px,4vw,36px)] uppercase leading-[0.9] whitespace-pre-line tracking-wide pt-1">
                   {card.role}
                 </p>
               </div>
