@@ -4,17 +4,17 @@ import Image from "next/image";
 import { useState } from "react";
 
 import { CANVAS_TEXTURE_STYLE } from './Hero'; 
-interface Card {
-  role: string;
-  name: string;
-  phone: string;
-}
+// interface Card {
+//   role: string;
+//   name: string;
+//   phone: string;
+// }
 
-interface HeadCard {
-  club: string;
-  name: string;
-  phone: string;
-}
+// interface HeadCard {
+//   club: string;
+//   name: string;
+//   phone: string;
+// }
 function Spiral() {
   return (
     <svg
@@ -53,7 +53,7 @@ function FilterIcon() {
 export default function Contact() {
   const [searchQuery, setSearchQuery] = useState("");
 
-  const cards: Card[] = [
+  const cards = [
     { role: "Marketing and Cultural\nCoordinator",            name: "AMIRTHAVARSHINI R", phone: "+91 99529 64049" },
     { role: "Promotions and External\nRelations Coordinator", name: "AMRUTHA K R",        phone: "+91 93619 71610" },
     { role: "Infra and Finance\nCoordinator",                 name: "MUKILAN V M",         phone: "+91 93844 37698" },
@@ -61,7 +61,7 @@ export default function Contact() {
     { role: "Creative and Development\nCoordinator",          name: "RAJESHWAR P",         phone: "+91 80724 37287" },
   ];
 
-  const heads: HeadCard[] = Array(12).fill(null).map(() => ({
+  const heads = Array(12).fill(null).map(() => ({
     club: "CLUB",
     name: "NAME",
     phone: "+91 12345 67890",
@@ -73,14 +73,14 @@ export default function Contact() {
       h.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  const J: React.CSSProperties = {
+  const J = {
     fontFamily: "'Jomhuria', sans-serif",
     fontWeight: 400,
     fontStyle: "normal",
   };
 
   // ── Single source of truth — both card types share these exactly ──
-  const CARD_SHELL: React.CSSProperties = {
+  const CARD_SHELL = {
     border: "3px solid #000000",
     borderRadius: "clamp(6px,0.7vw,10px)",
     overflow: "hidden",

@@ -22,9 +22,9 @@ export const CANVAS_TEXTURE_STYLE = {
   inset: 0,
   zIndex: 500,
   pointerEvents: "none",
-  opacity: 0.7,
+  opacity: 0.8,
   mixBlendMode: "normal",
-  backgroundImage: "url('/texture.png')", // make sure path is correct
+  backgroundImage: "url('/texture.png')",
   backgroundRepeat: "repeat",
 };
 
