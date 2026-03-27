@@ -22,28 +22,29 @@ const WAVE_GAP = 1.6; // highly relaxed spacing
 
 // ─── Wave count ───────────────────────────────────────────────────────────────
 const NUM_WAVES = 200; // 70 seconds of non-stop fluid playback
-const photoNames = ["vortex1.jpg",
-      "vortex2.jpg",
-      "vortex3.jpg",
-      "vortex4.jpg",
-      "vortex5.jpg",
-      "vortex6.jpg",
-      "vortex7.jpg",
-      "vortex8.jpg",
-      "vortex9.jpg",
-      "vortex10.jpg",
-      "vortex11.jpg",
-      "vortex12.jpg",
-      "vortex13.jpg",
-      "vortex14.jpg",
-      "vortex15.jpg",
-      "vortex16.jpg",
-      "vortex17.jpg",
-      "vortex18.jpg",
-      "vortex19.jpg",
-      "vortex20.jpg",
-      "vortex21.jpg",
-      "vortex22.jpg"
+const photoNames = [
+  "vortex1.JPG",
+  "vortex2.JPG",
+  "vortex3.jpg",
+  "vortex4.jpg",
+  "vortex5.jpg",
+  "vortex6.jpg",
+  "vortex7.jpg",
+  "vortex8.JPG",
+  "vortex9.JPG",
+  "vortex10.jpg",
+  "vortex11.jpg",
+  "vortex12.jpg",
+  "vortex13.jpg",
+  "vortex14.jpg",
+  "vortex15.JPG",
+  "vortex16.JPG",
+  "vortex17.JPG",
+  "vortex18.JPG",
+  "vortex19.jpg",
+  "vortex20.jpg",
+  "vortex21.jpg",
+  "vortex22.jpg"
     ]
 function getRandomElements(arr, count) {
   // Shuffle a copy of the input array (Fisher‑Yates)

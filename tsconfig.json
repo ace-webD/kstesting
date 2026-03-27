@@ -30,7 +30,7 @@
     "**/*.mts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "app/components/Contact.jsx"  ],
   "exclude": [
     "node_modules"
   ]
