@@ -124,7 +124,6 @@ export const Hero = () => {
     >
       {/* ===== GLOBAL CANVAS/FABRIC TEXTURE OVERLAY ===== */}
       <div style={CANVAS_TEXTURE_STYLE} />
-
       {/* ===== NAVBAR ===== */}
       
 
@@ -152,7 +151,7 @@ export const Hero = () => {
 
         {/* Animated photo vortex overlay */}
         <div style={{ position: "absolute", inset: 0, zIndex: 1}}>
-          {/* <VortexGallery /> */}
+          <VortexGallery />
         </div>
 
         {/* Title content */}

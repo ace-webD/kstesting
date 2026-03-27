@@ -4,17 +4,56 @@ import Image from "next/image";
 import { useState } from "react";
 
 import { CANVAS_TEXTURE_STYLE } from './Hero'; 
-// interface Card {
-//   role: string;
-//   name: string;
-//   phone: string;
-// }
-
-// interface HeadCard {
-//   club: string;
-//   name: string;
-//   phone: string;
-// }
+const headsInfo = [
+  { "name": "Uvan Sk", "club": "300DPI", "mobile": "8870762516" },
+  { "name": "Saivishnu A", "club": "KS Merchandise", "mobile": "7904537776" },
+  { "name": "Arka", "club": "Promotions & Outreach", "mobile": "9007481188" },
+  { "name": "Naveen K", "club": "SASTRA TAMIL SANGAM", "mobile": "8610570404" },
+  { "name": "Aadhithiya VR", "club": "KS OpCon", "mobile": "8825590985" },
+  { "name": "Indhuja K", "club": "TechnoInformals", "mobile": "9746438301" },
+  { "name": "Bhavana S", "club": "SASTRA TAMIL SANGAM", "mobile": "7904728524" },
+  { "name": "Swaminathan S", "club": "KS OpCon", "mobile": "7358158275" },
+  { "name": "Asokan Harish", "club": "The studio", "mobile": "7418466967" },
+  { "name": "Sajan ganapathy", "club": "The studio", "mobile": "9629749166" },
+  { "name": "Sridhar Subramaniam", "club": "The studio", "mobile": "8287092959" },
+  { "name": "Amulya", "club": "The Artz Gumbal", "mobile": "9705961326" },
+  { "name": "Surakshanan H", "club": "TechnoInformals", "mobile": "9445257239" },
+  { "name": "Kavin Adhithya M", "club": "300DPI", "mobile": "9345275746" },
+  { "name": "S Sriharsha", "club": "Telugu Sahithi Samithi", "mobile": "8977895375" },
+  { "name": "Radha Moukthika", "club": "Telugu Sahithi Samithi", "mobile": "9154316300" },
+  { "name": "Moningi Venkata Mani Karthik", "club": "Telugu Sahithi Samithi", "mobile": "9642484640" },
+  { "name": "V Mallikeshwari", "club": "KS Merchandise", "mobile": "9489148374" },
+  { "name": "Saikrishnan J", "club": "KS Public Relations", "mobile": "8190829395" },
+  { "name": "Rohini R", "club": "KS Public Relations", "mobile": "7305485558" },
+  { "name": "Prem Subramanyan Vee Vee", "club": "KS Public Relations", "mobile": "9363639886" },
+  { "name": "Kesavamoorthy s", "club": "The Artz Gumbal", "mobile": "8838194809" },
+  { "name": "Jhanvi gopal", "club": "The Artz Gumbal", "mobile": "9600192504" },
+  { "name": "Amulya", "club": "The Artz Gumbal", "mobile": "9705961326" },
+  { "name": "Monisha K M", "club": "KS Hospitality", "mobile": "6379426600" },
+  { "name": "Sabarish G", "club": "KS Hospitality", "mobile": "9025608695" },
+  { "name": "Vershaa SJ", "club": "Sastra Fotohub", "mobile": "8925747213" },
+  { "name": "Palanibharathi V", "club": "Sastra Fotohub", "mobile": "9629944349" },
+  { "name": "Gss Ayswar", "club": "KS Upahaar", "mobile": "7200080364" },
+  { "name": "Saradhaa krishnamurthi", "club": "KS Upahaar", "mobile": "9080721170" },
+  { "name": "Aravind K N", "club": "KS Upahaar", "mobile": "8807949809" },
+  { "name": "Mohitha R", "club": "Thandav", "mobile": "7010979558" },
+  { "name": "Sibyl Jovita", "club": "Thandav", "mobile": "9047323288" },
+  { "name": "Anish", "club": "Unmaad", "mobile": "9832268284" },
+  { "name": "Aditya Balasubramaniam", "club": "Unmaad", "mobile": "9643024791" },
+  { "name": "Indhuja B", "club": "KS Marketing", "mobile": "9994913279" },
+  { "name": "Hari Prasad R", "club": "KS Infra", "mobile": "8610045680" },
+  { "name": "Krishmrityunjay R", "club": "KS Marketing", "mobile": "9940322133" },
+  { "name": "Karthika A P", "club": "Promotions & Outreach", "mobile": "6383180977" },
+  { "name": "Vaibhavi Balaji", "club": "Promotions & Outreach", "mobile": "7550170263" },
+  { "name": "Manish A", "club": "KS Infra", "mobile": "8610436623" },
+  { "name": "Shrivarun R", "club": "Sastra Music Team", "mobile": "9962362897" },
+  { "name": "Harrish M", "club": "KS Marketing", "mobile": "9789775668" },
+  { "name": "Radha krishnan R", "club": "Ks infra", "mobile": "8608093134" },
+  { "name": "Rohith", "club": "Insiders", "mobile": "9542958894" },
+  { "name": "Chandramouli", "club": "Insiders", "mobile": "9566308149" },
+  { "name": "Shreya E", "club": "Pubc", "mobile": "9789081645" },
+  { "name": "Aravind Vasan N", "club": "Pubc", "mobile": "7708131964" }
+]
 function Spiral() {
   return (
     <svg
@@ -67,7 +106,7 @@ export default function Contact() {
     phone: "+91 12345 67890",
   }));
 
-  const filteredHeads = heads.filter(
+  const filteredHeads = headsInfo.filter(
     (h) =>
       h.club.toLowerCase().includes(searchQuery.toLowerCase()) ||
       h.name.toLowerCase().includes(searchQuery.toLowerCase())
@@ -326,7 +365,7 @@ export default function Contact() {
                   className="text-center text-[#4C4C4C] text-black"
                   style={{ ...J, fontSize: PHONE_FONT }}
                 >
-                  {head.phone}
+                  {"+91 " + head.mobile.slice(0,5) + " " + head.mobile.slice(5,10)}
                 </p>
               </div>
             </div>

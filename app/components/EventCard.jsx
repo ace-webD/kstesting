@@ -31,10 +31,10 @@ export const EventCard = ({EventLink, EventName, EventImage, EventContent}) => {
       {/* Content */}
       <div className="flex-1 flex flex-col gap-2">
 
-        <h2 className="text-xl md:text-2xl font-bold text-[#213447]">
+        <h2 className="text-[3rem] tracking-wide font-bold text-[#213447]">
           {EventName}
         </h2>
-        <p className="text-xs md:text-sm leading-relaxed">
+        <p className="text-[1.1rem]  leading-relaxed">
           {EventContent}
         </p>
         <a href={EventLink}
@@ -43,10 +43,10 @@ export const EventCard = ({EventLink, EventName, EventImage, EventContent}) => {
 
       
         <button className="
-          mt-2
+          mt-8
           bg-[#213447] 
-          text-white 
-          px-6 py-2 
+          text-[#e9e1cf] 
+          px-10 
           rounded-md 
           border-2 border-black 
           shadow-[0_4px_0_black]
@@ -55,6 +55,7 @@ export const EventCard = ({EventLink, EventName, EventImage, EventContent}) => {
           active:shadow-[0_2px_0_black]
 
           w-full md:w-fit
+          text-[2rem]
         " >
           REGISTER
         </button>
@@ -73,7 +74,7 @@ export const Events = () => {
         <div style={CANVAS_TEXTURE_STYLE} />
       {/* Header */}
       <div
-                          className="w-full flex justify-between items-center px-4 md:px-8 lg:px-12 shadow-[4px_4px_0px_#000000] sm:shadow-[6px_6px_0px_#000000] bg-[#213447] h-[80px] sm:h-[105px] md:h-[132px] rounded-full border-[3px] md:border-[5px] border-black"
+                          className=" w-full flex justify-between items-center px-4 md:px-8 lg:px-12 shadow-[4px_4px_0px_#000000] sm:shadow-[6px_6px_0px_#000000] bg-[#213447] h-[80px] sm:h-[105px] md:h-[132px] rounded-full border-[3px] md:border-[5px] border-black"
                       >
       
       
@@ -109,7 +110,7 @@ export const Events = () => {
         pt-10 md:pt-16
         max-w-[1200px] mx-auto
       ">
-        <EventCard EventName={"Event1"} EventLink={"https://www.youtube.com"} EventImage={"/next.svg"} EventContent={"The one and only event"} />
+        <EventCard EventName={"Event1"} EventLink={"https://www.youtube.com"} EventImage={"/next.svg"} EventContent={"The one and only event fjvbhfd vfvnfkdvnfhd rfnvfndvnh vufdvnfdh fvfdnvhfd"} />
         <EventCard EventName={"Event2"} EventLink={"https://chatgpt.com/"} EventImage={"/spiral.png"} EventContent={"The one and only event event is not eventing  "}/>
         <EventCard EventName={"Event3"} EventLink={"https://ace-sastra.vercel.app/"} EventImage={"/globe.svg"} EventContent={"brain is not braining"}/>
         <EventCard EventName={"Event4"} EventLink={"https://webstream.sastra.edu/sastrapwi/"} EventImage={"/file.svg"} EventContent={"making fun around troubles"}/>
