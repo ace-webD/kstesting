@@ -244,6 +244,7 @@ export const Hero = () => {
             textAlign: "center",
             padding: "clamp(24px, 5vw, 48px) clamp(12px, 3vw, 24px)",
           }}
+          className="md:mt-[-200px]"
         >
           {/* Kuruksastra logo with thick black shadow/border */}
           <div
