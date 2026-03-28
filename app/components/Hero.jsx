@@ -29,62 +29,141 @@ export const CANVAS_TEXTURE_STYLE = {
 };
 
 /* ===== Navbar Component ===== */
+
 export const Navbar = () => {
-  const scrollToEvents = (name) => {
-    const element = document.getElementById(name);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  }
-  return(
-  <nav
-    style={{
-      position: "fixed",
-      top: 0,
-      left: 0,
-      right: 0,
-      zIndex: 99999,
-      display: "flex",
-      flexDirection: "column",
-      CANVAS_TEXTURE_STYLE
-    }}
-  >
-    <div
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  return (
+    <nav
       style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 99999,
         display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-        padding: "clamp(10px, 2vw, 20px) clamp(12px, 3vw, 40px)",
-        background: "rgba(0, 0, 0, 0.95)",
-        backdropFilter: "blur(8px)",
-        borderBottom: "1px solid rgba(255,255,255,0.06)",
+        flexDirection: "column",
       }}
     >
-      {/* Logo */}
-      <Link href={"/"}>
-        <Image
-        src="/ks_logo.png"
-        alt="Kuruksastra"
-        color="#E9E1CF"
-        width={140}
-        height={20}
-        priority
+      <div
         style={{
-          width: "clamp(80px, 10vw, 140px)",
-          height: "auto",
-          filter: "invert(1) brightness(0.95)",
-          cursor: "pointer",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          padding: "clamp(10px, 2vw, 20px) clamp(12px, 3vw, 40px)",
+          background: "rgba(0, 0, 0, 0.95)",
+          backdropFilter: "blur(8px)",
+          borderBottom: "1px solid rgba(255,255,255,0.06)",
         }}
-      />
-      </Link>
-      <div className="flex flex-row justify-end flex-1 gap-x-6 text-xl md:text-3xl md:gap-x-15 text-white" style={{ fontFamily: "'Jomhuria'", opacity: 0.9}}>
-        <div className="cursor-pointer text-[#f5f5f5] tracking-wider hover:translate-x-1 transition-all duration-300 ease-in-out uppercase" ><Link href={"/about"}>About</Link></div>
-        <div className="cursor-pointer text-[#f5f5f5] tracking-wider hover:translate-x-1 transition-all duration-300 ease-in-out uppercase" ><Link href={"/sponsors"}>Sponsors</Link></div>
-        <div className="cursor-pointer text-[#f5f5f5] tracking-wider hover:translate-x-1 transition-all duration-300 ease-in-out uppercase" ><Link href={"/contact"}>Contact</Link></div>
+      >
+        {/* Logo */}
+        <Link href={"/"}>
+          <Image
+            src="/ks_logo.png"
+            alt="Kuruksastra"
+            width={140}
+            height={20}
+            priority
+            style={{
+              width: "clamp(80px, 10vw, 140px)",
+              height: "auto",
+              filter: "invert(1) brightness(0.95)",
+              cursor: "pointer",
+            }}
+          />
+        </Link>
+
+        {/* Desktop Navigation Links */}
+        <div
+          className="hidden md:flex flex-row justify-end flex-1 gap-x-6 text-xl md:text-3xl md:gap-x-15 text-white"
+          style={{ fontFamily: "'Jomhuria'", opacity: 0.9 }}
+        >
+          <Link
+            href="/about"
+            className="cursor-pointer text-[#f5f5f5] tracking-wider hover:translate-x-1 transition-all duration-300 ease-in-out uppercase"
+          >
+            About
+          </Link>
+          <Link
+            href="/sponsors"
+            className="cursor-pointer text-[#f5f5f5] tracking-wider hover:translate-x-1 transition-all duration-300 ease-in-out uppercase"
+          >
+            Sponsors
+          </Link>
+          <Link
+            href="/contact"
+            className="cursor-pointer text-[#f5f5f5] tracking-wider hover:translate-x-1 transition-all duration-300 ease-in-out uppercase"
+          >
+            Contact
+          </Link>
+        </div>
+
+        {/* Mobile Hamburger Icon */}
+        <button
+          className="block md:hidden text-white focus:outline-none"
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Toggle menu"
+        >
+          <svg
+            className="w-8 h-8"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            {menuOpen ? (
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
+            ) : (
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            )}
+          </svg>
+        </button>
       </div>
-    </div>
-  </nav>)
-}
+
+      {/* Mobile Menu */}
+      {menuOpen && (
+        <div className="md:hidden bg-black/95 backdrop-blur-md border-t border-white/10">
+          <div
+            className="flex flex-col items-center py-4 space-y-4 text-white text-xl"
+            style={{ fontFamily: "'Jomhuria'", opacity: 0.9 }}
+          >
+            <Link
+              href="/about"
+              onClick={() => setMenuOpen(false)}
+              className="py-2 hover:text-gray-300 transition"
+            >
+              About
+            </Link>
+            <Link
+              href="/sponsors"
+              onClick={() => setMenuOpen(false)}
+              className="py-2 hover:text-gray-300 transition"
+            >
+              Sponsors
+            </Link>
+            <Link
+              href="/contact"
+              onClick={() => setMenuOpen(false)}
+              className="py-2 hover:text-gray-300 transition"
+            >
+              Contact
+            </Link>
+          </div>
+        </div>
+      )}
+    </nav>
+  );
+};
 
 export const Hero = () => {
   const [currentIndex, setCurrentIndex] = useState(0);

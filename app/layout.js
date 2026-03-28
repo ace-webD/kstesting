@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono, Jomhuria } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "./components/Hero";
+import LoadingOverlay from "./components/LoadingOverlay";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,8 +34,10 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${jomhuria.variable} antialiased`}
       >
+        <LoadingOverlay>
         <Navbar />
         {children}
+        </LoadingOverlay>
       </body>
     </html>
   );

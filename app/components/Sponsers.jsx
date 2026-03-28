@@ -74,7 +74,7 @@ const Sponsers = () => {
                                     px-2 sm:px-3 gap-3 mb-14"
                                 >
                                 {sponsorRows.slice(0,2).map((logo, i) => (
-                                    <div className='bg-[#e9e1cf] p-5 border-3 rounded-sm'><img
+                                    <div key={i} className='bg-[#e9e1cf] p-5 border-3 rounded-sm'><img
                                     key={i}
                                     src={logo}
                                     className="h-20 sm:h-10 md:h-25 w-auto object-contain"
