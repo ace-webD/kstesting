@@ -16,8 +16,8 @@ export default function LoadingOverlay({ children }) {
     "Ready to mesmerize!",
   ];
 
-  const MESSAGE_INTERVAL = 2500;
-  const TOTAL_DURATION = 15000;
+  const MESSAGE_INTERVAL = 1000;
+  const TOTAL_DURATION = 5000;
 
   useEffect(() => {
     if (isLoading) {

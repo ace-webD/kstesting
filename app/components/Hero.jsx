@@ -57,7 +57,7 @@ export const Navbar = () => {
         }}
       >
         {/* Logo */}
-        <Link href={"/"}>
+        <a href={"/"}>
           <Image
             src="/ks_logo.png"
             alt="Kuruksastra"
@@ -71,7 +71,7 @@ export const Navbar = () => {
               cursor: "pointer",
             }}
           />
-        </Link>
+        </a>
 
         {/* Desktop Navigation Links */}
         <div
@@ -134,7 +134,7 @@ export const Navbar = () => {
       {menuOpen && (
         <div className="md:hidden bg-black/95 backdrop-blur-md border-t border-white/10">
           <div
-            className="flex flex-col items-center py-4 space-y-4 text-white text-xl"
+            className="flex flex-col items-center py-4 space-y-4 text-white text-2xl"
             style={{ fontFamily: "'Jomhuria'", opacity: 0.9 }}
           >
             <Link
