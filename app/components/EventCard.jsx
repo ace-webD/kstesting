@@ -93,7 +93,6 @@ export const Events = () => {
         ...doc.data()
       }))
       setEvents(events) 
-      console.log(events)
     }
     catch(err){
       console.log(err)
