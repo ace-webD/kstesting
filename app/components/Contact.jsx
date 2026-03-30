@@ -52,7 +52,8 @@ const headsInfo = [
   { "name": "Rohith", "club": "Insiders", "mobile": "9542958894" },
   { "name": "Chandramouli", "club": "Insiders", "mobile": "9566308149" },
   { "name": "Shreya E", "club": "Pubc", "mobile": "9789081645" },
-  { "name": "Aravind Vasan N", "club": "Pubc", "mobile": "7708131964" }
+  { "name": "Aravind Vasan N", "club": "Pubc", "mobile": "7708131964" },
+  { "name": "Sai Charan", "club": "ELS", "mobile": "9500113240" }
 ]
 function Spiral() {
   return (
@@ -187,7 +188,7 @@ export default function Contact() {
         </h3>
 
         <div
-          className="w-full flex flex-wrap justify-center"
+          className="w-full flex flex-wrap justify-center mx-auto"
           style={{ gap: "clamp(6px,1.4vw,18px)", marginBottom: "clamp(18px,3.5vw,48px)" }}
         >
           {cards.map((card, i) => (
@@ -278,14 +279,13 @@ export default function Contact() {
               placeholder="Type to Search"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full h-full bg-[#E9E1CF] text-[#213447] placeholder-[#8a9bb0] outline-none focus:ring-1 focus:ring-[#213447]"
+              className="placeholder:text-[1.5rem] md:placeholder:text-[1.8rem] text-[1.5rem] md:text-[1.8rem] placeholder:py-auto text-[2rem] w-full h-full bg-[#E9E1CF] text-[#213447] placeholder-[#8a9bb0] outline-none focus:ring-1 focus:ring-[#213447]"
               style={{
                 ...J,
                 border: "1.5px solid #000000",
                 borderRadius: "clamp(4px,0.5vw,8px)",
                 paddingLeft: "clamp(28px,2.5vw,40px)",
                 paddingRight: "clamp(8px,1vw,14px)",
-                fontSize: "clamp(20px,1.4vw,20px)",
               }}
             />
           </div>
@@ -384,12 +384,39 @@ export default function Contact() {
       </div>
 
       <style jsx>{`
-        @media (max-width: 768px) {
-          .heads-grid { grid-template-columns: repeat(3, 1fr) !important; }
-        }
-        @media (max-width: 480px) {
-          .heads-grid { grid-template-columns: repeat(2, 1fr) !important; }
-        }
+        /* Desktop: 3‑column grid (default) */
+  .heads-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(6px, 1.2vw, 16px);
+  }
+
+  /* Tablet: keep 3 columns */
+  @media (max-width: 768px) {
+    .heads-grid {
+      grid-template-columns: repeat(3, 1fr) !important;
+    }
+  }
+
+  /* Mobile: switch to flexbox – last card will be centered automatically */
+  @media (max-width: 480px) {
+    .heads-grid {
+      display: flex !important;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: clamp(6px, 1.2vw, 16px);
+    }
+    /* Each card takes roughly half the width (minus gap) */
+    .heads-grid > div {
+      width: calc(50% - clamp(3px, 0.6vw, 8px));
+      flex-shrink: 0;
+    }
+  }
+
+  /* Desktop centering for last card in 3‑column grid */
+  .heads-grid > :last-child:nth-child(3n+1) {
+    grid-column: 2 / span 1;
+  }
       `}</style>
     </footer>
   );

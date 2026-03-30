@@ -1,10 +1,13 @@
+"use client"
 import Image from "next/image";
 import { CANVAS_TEXTURE_STYLE } from "./Hero";
+import { collection, doc, getDocs } from "firebase/firestore";
+import { db } from "../config/firebase.js";
+import { useEffect, useState } from "react";
 
 
-export const EventCard = ({EventLink, EventName, EventImage, EventContent}) => {
+export const EventCard = ({EventLink, EventName, EventImage, EventContent, EventDate, EventTime, EventVenue}) => {
 
- 
   return (
     <div className="
       border-4 border-black 
@@ -18,30 +21,42 @@ export const EventCard = ({EventLink, EventName, EventImage, EventContent}) => {
 
       
       <div className="
-        w-full h-[200px]
-        md:w-[250px] md:h-[200px]
+        w-full
+        md:w-[250px] 
         bg-gray-300 
         border-2 border-black 
         rounded-lg
         flex items-center justify-center
+        overflow-hidden
+        p-2
+        my-auto
       ">
-        <img src={EventImage} width={80} />
+        <img src={EventImage} className="w-full object-cover" />
       </div>
 
       {/* Content */}
-      <div className="flex-1 flex flex-col gap-2">
+      <div className="flex-1 flex flex-col gap-1 md:gap-0">
 
         <h2 className="text-[3rem] tracking-wide font-bold text-[#213447]">
           {EventName}
         </h2>
-        <p className="text-[1.1rem]  leading-relaxed">
+        <p className="text-[1.7rem] font-medium leading-7">
           {EventContent}
+        </p>
+        <p className="text-[2rem] md:text-[1.5rem] lg:text-[1.9rem] leading-relaxed">
+          <span className="font-light">Date:</span> {EventDate}
+        </p>
+        <p className="text-[2rem] md:text-[1.5rem] lg:text-[1.9rem] leading-relaxed">
+          <span className="font-light">Time:</span> {EventTime}
+        </p>
+        <p className="text-[2rem] md:text-[1.5rem] lg:text-[1.9rem] leading-relaxed">
+          <span className="font-light">Venue:</span> {EventVenue}
         </p>
         <a href={EventLink}
         target="_blank"
-        rel= "noopener noreferrer">
-
-      
+        rel= "noopener noreferrer"
+        className="mt-auto"
+        >
         <button className="
           mt-8
           bg-[#213447] 
@@ -50,10 +65,9 @@ export const EventCard = ({EventLink, EventName, EventImage, EventContent}) => {
           rounded-md 
           border-2 border-black 
           shadow-[0_4px_0_black]
-
+          cursor-pointer
           active:translate-y-[2px]
           active:shadow-[0_2px_0_black]
-
           w-full md:w-fit
           text-[2rem]
         " >
@@ -68,6 +82,29 @@ export const EventCard = ({EventLink, EventName, EventImage, EventContent}) => {
 
 
 export const Events = () => {
+  const [events,setEvents] = useState(null)
+  const [loading,setLoading] = useState(false)
+  const fetchData = async() => {
+    try{
+      setLoading(true)
+      const querySnapshot = await getDocs(collection(db, "events"))
+      const events = querySnapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+      }))
+      setEvents(events) 
+      console.log(events)
+    }
+    catch(err){
+      console.log(err)
+    }
+    finally{
+      setLoading(false)
+    }
+  }
+  useEffect(() => {
+    fetchData()
+  },[])
   return (
     <div className="texture-overlay overflow-auto bg-[#f4eedf] min-h-screen px-4 md:px-6 py-6 md:py-10 mt-10 md:mt-15" 
       style={{ backgroundColor: '#E8E0D5', fontFamily: "'Jomhuria', cursive"}} >
@@ -103,19 +140,36 @@ export const Events = () => {
 
       {/* Event List */}
       <div className="
-      
         header-overlay
         flex flex-col 
         gap-6 md:gap-10 
         pt-10 md:pt-16
         max-w-[1200px] mx-auto
       ">
-        <EventCard EventName={"Event1"} EventLink={"https://www.youtube.com"} EventImage={"/next.svg"} EventContent={"The one and only event fjvbhfd vfvnfkdvnfhd rfnvfndvnh vufdvnfdh fvfdnvhfd"} />
-        <EventCard EventName={"Event2"} EventLink={"https://chatgpt.com/"} EventImage={"/spiral.png"} EventContent={"The one and only event event is not eventing  "}/>
-        <EventCard EventName={"Event3"} EventLink={"https://ace-sastra.vercel.app/"} EventImage={"/globe.svg"} EventContent={"brain is not braining"}/>
-        <EventCard EventName={"Event4"} EventLink={"https://webstream.sastra.edu/sastrapwi/"} EventImage={"/file.svg"} EventContent={"making fun around troubles"}/>
+        {
+          events?.map((event,index) => {
+            return(
+              <EventCard 
+              key={index}
+              EventLink={event.formLink}
+              EventName={event.eventName}
+              EventImage={event.poster}
+              EventContent={event.eventDescription}
+              EventTime={event.time}
+              EventDate={event.date}
+              EventVenue={event.venue}
+              />
+            )
+          })
+        }
       </div>
-
+        {
+          loading && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-sm">
+              <div className="h-12 w-12 animate-spin rounded-full border-4 border-black border-t-transparent" />
+            </div>
+          )
+        }
     </div>
   );
 }

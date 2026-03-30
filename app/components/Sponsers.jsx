@@ -91,8 +91,7 @@ const Sponsers = () => {
                                     px-2 sm:px-3 gap-1 mb-14"
                                 >
                                 {sponsorRows.slice(2,3).map((logo, i) => (
-                                    <div className='bg-[#e9e1cf] p-5 border-3 rounded-sm'><img
-                                    key={i}
+                                    <div className='bg-[#e9e1cf] p-5 border-3 rounded-sm' key={i}><img
                                     src={logo}
                                     className="h-20 sm:h-10 md:h-25 w-auto object-contain"
                                     style={{
@@ -108,8 +107,7 @@ const Sponsers = () => {
                                     px-2 sm:px-3 gap-3 mb-14"
                                 >
                                 {sponsorRows.slice(3,5).map((logo, i) => (
-                                    <div className='bg-[#e1e9cf] p-5 border-3 rounded-sm'><img
-                                    key={i}
+                                    <div className='bg-[#e1e9cf] p-5 border-3 rounded-sm' key={i}><img
                                     src={logo}
                                     className="h-20 sm:h-10 md:h-25 w-auto object-contain"
                                     style={{
@@ -125,8 +123,7 @@ const Sponsers = () => {
                                     px-2 sm:px-3 gap-3 mb-4"
                                 >
                                 {sponsorRows.slice(5,6).map((logo, i) => (
-                                    <div className='bg-[#e1e9cf] p-5 border-3 rounded-sm'><img
-                                    key={i}
+                                    <div className='bg-[#e1e9cf] p-5 border-3 rounded-sm' key={i}><img
                                     src={logo}
                                     className="h-20 sm:h-10 md:h-25 w-auto object-contain"
                                     style={{
@@ -150,8 +147,8 @@ const Sponsers = () => {
                                     px-2 sm:px-3 gap-2 mb-14"
                                 >
                                 {coSponsors.slice(0,3).map((logo, i) => (
-                                    <div className='bg-[#e9e1cf] p-1 border-3 rounded-sm'><img
-                                    key={i}
+                                    <div className='bg-[#e9e1cf] p-1 border-3 rounded-sm' key={i}><img
+                                    
                                     src={logo}
                                     className="h-20 sm:h-10 md:h-25 w-auto object-contain"
                                     style={{
@@ -167,8 +164,8 @@ const Sponsers = () => {
                                     px-2 sm:px-3 gap-2 mb-14"
                                 >
                                 {coSponsors.slice(3,5).map((logo, i) => (
-                                    <div className='bg-[#e9e1cf] p-1 border-3 rounded-sm'><img
-                                    key={i}
+                                    <div className='bg-[#e9e1cf] p-1 border-3 rounded-sm' key={i}><img
+                                    
                                     src={logo}
                                     className="h-20 sm:h-10 md:h-25 w-auto object-contain"
                                     style={{
@@ -184,8 +181,8 @@ const Sponsers = () => {
                                     px-2 sm:px-3 gap-3 mb-14"
                                 >
                                 {coSponsors.slice(5,8).map((logo, i) => (
-                                    <div className='bg-[#e1e9cf] p-1 border-3 rounded-sm'><img
-                                    key={i}
+                                    <div className='bg-[#e1e9cf] p-1 border-3 rounded-sm' key={i}><img
+                                    
                                     src={logo}
                                     className="h-20 sm:h-10 md:h-25 w-auto object-contain"
                                     style={{
@@ -201,8 +198,8 @@ const Sponsers = () => {
                                     px-2 sm:px-3 gap-2 mb-14"
                                 >
                                 {coSponsors.slice(8,10).map((logo, i) => (
-                                    <div className='bg-[#e1e9cf] p-1 border-3 rounded-sm'><img
-                                    key={i}
+                                    <div className='bg-[#e1e9cf] p-1 border-3 rounded-sm' key={i}><img
+                                    
                                     src={logo}
                                     className="h-20 sm:h-10 md:h-25 w-auto object-contain"
                                     style={{

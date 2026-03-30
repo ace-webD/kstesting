@@ -85,6 +85,12 @@ export const Navbar = () => {
             About
           </Link>
           <Link
+            href="/events"
+            className="cursor-pointer text-[#f5f5f5] tracking-wider hover:translate-x-1 transition-all duration-300 ease-in-out uppercase"
+          >
+            Events
+          </Link>
+          <Link
             href="/sponsors"
             className="cursor-pointer text-[#f5f5f5] tracking-wider hover:translate-x-1 transition-all duration-300 ease-in-out uppercase"
           >
@@ -143,6 +149,13 @@ export const Navbar = () => {
               className="py-2 hover:text-gray-300 transition"
             >
               About
+            </Link>
+            <Link
+              href="/events"
+              onClick={() => setMenuOpen(false)}
+              className="py-2 hover:text-gray-300 transition"
+            >
+              Events
             </Link>
             <Link
               href="/sponsors"
