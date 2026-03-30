@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import VortexGallery from "./VortexDPI"
+import VortexGallery from "./VortexDPI";
 // import VortexGallery from "./Vortex"
 import Link from "next/link";
 
@@ -100,7 +100,7 @@ export const Navbar = () => {
             href="https://sastraevents.zohobackstage.in/Kuruksastra2026#/tickets?lang=en"
             className="cursor-pointer text-[#f5f5f5] tracking-wider hover:translate-x-1 transition-all duration-300 ease-in-out uppercase"
           >
-            Proshows
+            Tickets
           </Link>
           <Link
             href="/contact"
@@ -171,11 +171,11 @@ export const Navbar = () => {
               Sponsors
             </Link>
             <Link
-            href="https://sastraevents.zohobackstage.in/Kuruksastra2026#/tickets?lang=en"
-            className="cursor-pointer text-[#f5f5f5] tracking-wider hover:translate-x-1 transition-all duration-300 ease-in-out"
-          >
-            Proshows
-          </Link>
+              href="https://sastraevents.zohobackstage.in/Kuruksastra2026#/tickets?lang=en"
+              className="cursor-pointer text-[#f5f5f5] tracking-wider hover:translate-x-1 transition-all duration-300 ease-in-out"
+            >
+              Proshows
+            </Link>
             <Link
               href="/contact"
               onClick={() => setMenuOpen(false)}
@@ -193,7 +193,7 @@ export const Navbar = () => {
 export const Hero = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
-  
+
   useEffect(() => {
     const interval = setInterval(() => {
       setIsAnimating(true);
@@ -229,7 +229,6 @@ export const Hero = () => {
       {/* ===== GLOBAL CANVAS/FABRIC TEXTURE OVERLAY ===== */}
       <div style={CANVAS_TEXTURE_STYLE} />
       {/* ===== NAVBAR ===== */}
-      
 
       {/* ===== TOP SECTION — Gradient background with logo ===== */}
       <div
@@ -254,7 +253,7 @@ export const Hero = () => {
         />
 
         {/* Animated photo vortex overlay */}
-        <div style={{ position: "absolute", inset: 0, zIndex: 1}}>
+        <div style={{ position: "absolute", inset: 0, zIndex: 1 }}>
           <VortexGallery />
         </div>
 
@@ -357,7 +356,7 @@ export const Hero = () => {
                 lineHeight: 1.2,
                 textShadow:
                   "clamp(1px, 0.2vw, 2px) clamp(3px, 0.5vw, 5px) 0px rgba(0,0,0,1)",
-                textAlign: "center"
+                textAlign: "center",
               }}
             >
               April 3rd - 5th
@@ -374,7 +373,6 @@ export const Hero = () => {
           minHeight: "clamp(35vh, 50vh, 55vh)",
           padding: "clamp(8px, 1.5vw, 16px)",
           backgroundColor: "#E9E1CF",
-          
         }}
         className=""
       >
@@ -387,7 +385,8 @@ export const Hero = () => {
             border: "clamp(4px, 0.3vw, 10px) solid #000000",
             borderRadius: "clamp(10px, 1.5vw, 16px)",
             minHeight: "clamp(30vh, 40vh, calc(45vh - 40px))",
-            boxShadow: "clamp(3px, 0.5vw, 5px) clamp(4px, 0.6vw, 7px) 0px rgba(0,0,0,1)"
+            boxShadow:
+              "clamp(3px, 0.5vw, 5px) clamp(4px, 0.6vw, 7px) 0px rgba(0,0,0,1)",
           }}
         >
           <div
@@ -427,9 +426,7 @@ export const Hero = () => {
           <img
             src="/left_top_thunder.png"
             alt=""
-            
             style={{
-              
               position: "absolute",
               top: -2,
               left: 0,
@@ -523,13 +520,15 @@ export const Hero = () => {
                 }}
               >
                 <div
-  className={`
+                  className={`
     transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]
-    ${isAnimating 
-      ? "opacity-0 scale-75 translate-y-2 blur-md" 
-      : "opacity-100 scale-100 translate-y-0 blur-0 rotate-0"}
+    ${
+      isAnimating
+        ? "opacity-0 scale-75 translate-y-2 blur-md"
+        : "opacity-100 scale-100 translate-y-0 blur-0 rotate-0"
+    }
   `}
->
+                >
                   <p
                     style={{
                       fontFamily: "var(--font-jomhuria), serif",
