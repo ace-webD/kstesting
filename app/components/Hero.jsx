@@ -97,6 +97,12 @@ export const Navbar = () => {
             Sponsors
           </Link>
           <Link
+            href="https://sastraevents.zohobackstage.in/Kuruksastra2026#/tickets?lang=en"
+            className="cursor-pointer text-[#f5f5f5] tracking-wider hover:translate-x-1 transition-all duration-300 ease-in-out uppercase"
+          >
+            Proshows
+          </Link>
+          <Link
             href="/contact"
             className="cursor-pointer text-[#f5f5f5] tracking-wider hover:translate-x-1 transition-all duration-300 ease-in-out uppercase"
           >
@@ -164,6 +170,12 @@ export const Navbar = () => {
             >
               Sponsors
             </Link>
+            <Link
+            href="https://sastraevents.zohobackstage.in/Kuruksastra2026#/tickets?lang=en"
+            className="cursor-pointer text-[#f5f5f5] tracking-wider hover:translate-x-1 transition-all duration-300 ease-in-out"
+          >
+            Proshows
+          </Link>
             <Link
               href="/contact"
               onClick={() => setMenuOpen(false)}
