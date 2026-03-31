@@ -13,6 +13,11 @@ const coSponsors = [
   "/logos/land of tales.png",
   "/logos/FullStop.jpeg",
   "/logos/cuephoria.png",
+    "/logos/Infiniti_gaming.jpg",
+    "/logos/Inkspire cafe.jpeg",
+    "/logos/Meuco.jpeg",
+    "/logos/Ragaa.png",
+    "/logos/Reggi.jpg",
 ];
 
 const sponsorRows = [
@@ -163,7 +168,7 @@ const Sponsers = () => {
                                     h-[60px] sm:h-[75px] md:h-[90px]
                                     px-2 sm:px-3 gap-2 mb-14"
                                 >
-                                {coSponsors.slice(3,5).map((logo, i) => (
+                                {coSponsors.slice(3,6).map((logo, i) => (
                                     <div className='bg-[#e9e1cf] p-1 border-3 rounded-sm' key={i}><img
                                     
                                     src={logo}
@@ -180,7 +185,7 @@ const Sponsers = () => {
                                     h-[60px] sm:h-[75px] md:h-[90px]
                                     px-2 sm:px-3 gap-3 mb-14"
                                 >
-                                {coSponsors.slice(5,8).map((logo, i) => (
+                                {coSponsors.slice(6,9).map((logo, i) => (
                                     <div className='bg-[#e1e9cf] p-1 border-3 rounded-sm' key={i}><img
                                     
                                     src={logo}
@@ -197,7 +202,24 @@ const Sponsers = () => {
                                     h-[60px] sm:h-[75px] md:h-[90px]
                                     px-2 sm:px-3 gap-2 mb-14"
                                 >
-                                {coSponsors.slice(8,10).map((logo, i) => (
+                                {coSponsors.slice(9,12).map((logo, i) => (
+                                    <div className='bg-[#e1e9cf] p-1 border-3 rounded-sm' key={i}><img
+                                    
+                                    src={logo}
+                                    className="h-20 sm:h-10 md:h-25 w-auto object-contain"
+                                    style={{
+                                        mixBlendMode: "multiply",
+                                        background: "transparent",
+                                    }}
+                                    /></div>
+                                ))}
+                            </div>
+                             <div
+                                className="flex items-center justify-around
+                                    h-[60px] sm:h-[75px] md:h-[90px]
+                                    px-2 sm:px-3 gap-2 mb-14"
+                                >
+                                {coSponsors.slice(12,15).map((logo, i) => (
                                     <div className='bg-[#e1e9cf] p-1 border-3 rounded-sm' key={i}><img
                                     
                                     src={logo}

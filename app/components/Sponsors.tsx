@@ -13,6 +13,11 @@ const coSponsors = [
   "/logos/thoovibridals.jpg",
   "/logos/FullStop.jpeg",
   "/logos/cuephoria.png",
+  "/logos/Infiniti_gaming.jpg",
+  "/logos/Inkspire cafe.jpeg",
+  "/logos/Meuco.jpeg",
+  "/logos/Ragaa.png",
+  "/logos/Reggi.jpg",
 ];
 
 const sponsorRows = [
@@ -25,7 +30,9 @@ const sponsorRows = [
 const rows = [
   coSponsors.slice(0, 3),  // first 3
   coSponsors.slice(3, 6),  // next 3
-  coSponsors.slice(6, 10), // next 4
+  coSponsors.slice(6, 9), // next 3
+  coSponsors.slice(9, 12), // next 3
+  coSponsors.slice(12, 15), // next 3
 ];
 function Spiral() {
   return (
@@ -76,7 +83,7 @@ function SponsorsBanner() {
 
 function MainSponsorsGrid() {
   return (
-    <div className="flex flex-col justify-evenly mb-22 lg:gap-y-12">
+    <div className="flex flex-col justify-evenly mb-22 lg:gap-y-40 lg:mt-10">
       {sponsorRows.map((row, rowIndex) => (
         <div
           key={rowIndex}
@@ -88,7 +95,7 @@ function MainSponsorsGrid() {
             <img
               key={i}
               src={logo}
-              className={`h-10 sm:h-10 md:h-15 w-auto object-contain ${((i===0 && rowIndex==0) || (i===1 && rowIndex==1) || (i===0 && rowIndex===2)) ? 'h-11 sm:h-12 md:h-20 lg:h-22' : ''}`}
+              className={`h-10 sm:h-10 md:h-15 xl:h-25 w-auto object-contain ${((i===0 && rowIndex==0) || (i===1 && rowIndex==1) || (i===0 && rowIndex===2)) ? 'h-11 sm:h-12 md:h-20 lg:h-22' : ''}`}
               style={{
                 mixBlendMode: "multiply",
                 background: "transparent",
@@ -118,7 +125,7 @@ function CoSponsorsPanel() {
     <div
       key={rowIndex}
       className={`grid gap-1 sm:gap-3 items-center justify-center ${
-        rowIndex < 2 ? "grid-cols-3" : "grid-cols-4"
+        rowIndex < 2 ? "grid-cols-3" : "grid-cols-3"
       }`}
     >
       {row.map((logo, i) => (
