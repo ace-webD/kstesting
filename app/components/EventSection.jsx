@@ -189,7 +189,7 @@ export const EventSection = () => {
                     className="text-[clamp(2.5rem,12vw,8rem)] whitespace-nowrap md:mt-[-50px] lg:mt-[-80px]"
                     style={{ color: "#213447", zIndex: 550 }}
                   >
-                    8 Proshows
+                    8 PROSHOWS
                   </span>
                 </div>
               </div>
