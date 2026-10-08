@@ -94,11 +94,11 @@ export default function Contact() {
   const [searchQuery, setSearchQuery] = useState("");
 
   const cards = [
-    { role: "Marketing and Cultural\nCoordinator",            name: "MADHAV V K ",          phone: "+91 94441 92898" },
-    { role: "Promotions and External\nRelations Coordinator", name: "RAM KARTHICK S V",     phone: " +91 90256 96315" },
-    { role: "Infra and Finance\nCoordinator",                 name: "SAKTHI GURU S",        phone: "+91 96005 27934" },
-    { role: "Operations and cultural\nCoordinator",           name: "AMRUTHA K",            phone: "+91 76038 87455" },
-    { role: "Creative and Development\nCoordinator",          name: "ARSHIA BARIRAH A",     phone: "+91 95660 07948" },
+      { role: "Operations and cultural\nCoordinator",           name: "AMRUTHA K",            phone: "+91 76038 87455" },
+      { role: "Marketing and Cultural\nCoordinator",            name: "MADHAV V K ",          phone: "+91 94441 92898" },
+      { role: "Infra and Finance\nCoordinator",                 name: "SAKTHI GURU S",        phone: "+91 96005 27934" },
+      { role: "Creative and Development\nCoordinator",          name: "ARSHIA BARIRAH A",     phone: "+91 95660 07948" },
+      { role: "Promotions and External\nRelations Coordinator", name: "RAM KARTHICK S V",     phone: " +91 90256 96315" },
   ];
 
   const heads = Array(12).fill(null).map(() => ({
