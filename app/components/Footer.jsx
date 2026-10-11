@@ -40,11 +40,11 @@ export default function Footer() {
         <div className="flex flex-row flex-wrap justify-center items-stretch gap-[clamp(10px,3vw,30px)] mb-[clamp(20px,5vw,60px)] w-[95%] sm:w-[90%]">
 
           {[
-            { role: "Marketing and Cultural\nCoordinator",            name: "MADHAV V K ",          phone: "+91 94441 92898" },
-            { role: "Promotions and External\nRelations Coordinator", name: "RAM KARTHICK S V",     phone: " +91 90256 96315" },
-            { role: "Infra and Finance\nCoordinator",                 name: "SAKTHI GURU S",        phone: "+91 96005 27934" },
             { role: "Operations and cultural\nCoordinator",           name: "AMRUTHA K",            phone: "+91 76038 87455" },
+            { role: "Marketing and Cultural\nCoordinator",            name: "MADHAV V K ",          phone: "+91 94441 92898" },
+            { role: "Infra and Finance\nCoordinator",                 name: "SAKTHI GURU S",        phone: "+91 96005 27934" },
             { role: "Creative and Development\nCoordinator",          name: "ARSHIA BARIRAH A",     phone: "+91 95660 07948" },
+            { role: "Promotions and External\nRelations Coordinator", name: "RAM KARTHICK S V",     phone: " +91 90256 96315" },
           ].map((card, i) => (
             <div key={i} className="relative flex flex-col w-[47%] lg:w-[30%] min-h-[clamp(100px,18vw,190px)] rounded-[clamp(6px,1vw,12px)] overflow-hidden shadow-[clamp(2px,0.5vw,5px)_clamp(3px,0.6vw,6px)_0px_#000] border-[clamp(2px,0.4vw,4px)] border-black box-border hover:scale-[1.02] transition-transform">
 
